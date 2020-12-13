@@ -5,9 +5,9 @@
 @ Blog : https://wooiljeong.github.io
 """
 
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
 
 
 class Common:

@@ -4,7 +4,6 @@
 @ Github : https://github.com/WooilJeong/PublicDataReader
 @ Blog : https://wooiljeong.github.io
 """
-
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup

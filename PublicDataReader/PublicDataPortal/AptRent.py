@@ -13,6 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 from PublicDataReader.PublicDataPortal.__init__ import *
 
+
 class AptRentReader(Common):
 
     def __init__(self, serviceKey):
@@ -27,7 +28,8 @@ class AptRentReader(Common):
         API에 사용할 구 별 코드를 조회하는 메소드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         '''
 
-        result = self.code[self.code['법정동명'].str.contains(name)][['법정동명','법정구코드']]
+        result = self.code[self.code['법정동명'].str.contains(name)][[
+            '법정동명', '법정구코드']]
         result.index = range(len(result))
 
         return result
@@ -38,11 +40,10 @@ class AptRentReader(Common):
         '''
 
         # URL
-        url_1="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?LAWD_CD="+LAWD_CD
-        url_2="&DEAL_YMD=" + DEAL_YMD
-        url_3="&serviceKey=" + self.serviceKey
+        url_1 = "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?LAWD_CD="+LAWD_CD
+        url_2 = "&DEAL_YMD=" + DEAL_YMD
+        url_3 = "&serviceKey=" + self.serviceKey
         url = url_1+url_2+url_3
-                
 
         try:
             # Get raw data
@@ -55,31 +56,33 @@ class AptRentReader(Common):
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['법정동','지역코드','아파트','지번','년','월','일','건축년도','전용면적','층','보증금액','월세금액']
-            for t in te: 
-                for variable in variables:       
-                    try :
+            df = pd.DataFrame()
+            variables = ['법정동', '지역코드', '아파트', '지번', '년',
+                         '월', '일', '건축년도', '전용면적', '층', '보증금액', '월세금액']
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[법정동,지역코드,아파트,지번,년,월,일,건축년도,전용면적,층,보증금액,월세금액]], 
-                                    columns = variables
-                                    )
+                    [[법정동, 지역코드, 아파트, 지번, 년, 월, 일, 건축년도, 전용면적, 층, 보증금액, 월세금액]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ['지역코드','법정동','거래일','아파트','지번','전용면적','층','건축년도','보증금액','월세금액']
+            colNames = ['지역코드', '법정동', '거래일', '아파트',
+                        '지번', '전용면적', '층', '건축년도', '보증금액', '월세금액']
 
             # Feature Engineering
             try:
-                if len(df['년']!=0) & len(df['월']!=0) & len(df['일']!=0):
+                if len(df['년'] != 0) & len(df['월'] != 0) & len(df['일'] != 0):
 
                     df['거래일'] = df['년'] + '-' + df['월'] + '-' + df['일']
                     df['거래일'] = pd.to_datetime(df['거래일'])
-                    df['보증금액'] = pd.to_numeric(df['보증금액'].str.replace(',',''))
-                    df['월세금액'] = pd.to_numeric(df['월세금액'].str.replace(',',''))
+                    df['보증금액'] = pd.to_numeric(df['보증금액'].str.replace(',', ''))
+                    df['월세금액'] = pd.to_numeric(df['월세금액'].str.replace(',', ''))
 
             except:
                 df = pd.DataFrame(columns=colNames)
@@ -87,7 +90,7 @@ class AptRentReader(Common):
 
             # Arange Columns
             df = df[colNames]
-            df = df.sort_values(['법정동','거래일'])
+            df = df.sort_values(['법정동', '거래일'])
             df['법정동'] = df['법정동'].str.strip()
             df.index = range(len(df))
 
@@ -103,17 +106,16 @@ class AptRentReader(Common):
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
+
             pass
-        
 
     def DataCollector(self, LAWD_CD, start_date, end_date):
         '''

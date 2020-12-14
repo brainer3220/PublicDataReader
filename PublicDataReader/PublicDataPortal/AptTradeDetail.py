@@ -20,8 +20,7 @@ class AptTradeDetailReader(Common):
         # ServiceKey 유효성 검사
         api_url = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         super().test(api_url)
 
     def CodeFinder(self, name):
@@ -30,7 +29,9 @@ class AptTradeDetailReader(Common):
         API에 사용할 구 별 코드를 조회하는 메소드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         """
 
-        result = self.code[self.code["법정동명"].str.contains(name)][["법정동명", "법정구코드"]]
+        result = self.code[self.code["법정동명"].str.contains(name)][[
+            "법정동명", "법정구코드"
+        ]]
         result.index = range(len(result))
 
         return result
@@ -43,8 +44,7 @@ class AptTradeDetailReader(Common):
         # URL
         url_1 = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?LAWD_CD="
-            + LAWD_CD
-        )
+            + LAWD_CD)
         url_2 = "&DEAL_YMD=" + DEAL_YMD
         url_3 = "&serviceKey=" + self.serviceKey
         url_4 = "&numOfRows=99999"
@@ -95,33 +95,31 @@ class AptTradeDetailReader(Common):
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            거래금액,
-                            건축년도,
-                            년,
-                            도로명,
-                            도로명건물본번호코드,
-                            도로명건물부번호코드,
-                            도로명시군구코드,
-                            도로명일련번호코드,
-                            도로명지상지하코드,
-                            도로명코드,
-                            법정동,
-                            법정동본번코드,
-                            법정동부번코드,
-                            법정동시군구코드,
-                            법정동읍면동코드,
-                            법정동지번코드,
-                            아파트,
-                            월,
-                            일,
-                            전용면적,
-                            지번,
-                            지역코드,
-                            층,
-                        ]
-                    ],
+                    [[
+                        거래금액,
+                        건축년도,
+                        년,
+                        도로명,
+                        도로명건물본번호코드,
+                        도로명건물부번호코드,
+                        도로명시군구코드,
+                        도로명일련번호코드,
+                        도로명지상지하코드,
+                        도로명코드,
+                        법정동,
+                        법정동본번코드,
+                        법정동부번코드,
+                        법정동시군구코드,
+                        법정동읍면동코드,
+                        법정동지번코드,
+                        아파트,
+                        월,
+                        일,
+                        전용면적,
+                        지번,
+                        지역코드,
+                        층,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])

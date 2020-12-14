@@ -20,8 +20,7 @@ class BizTradeReader(Common):
         # ServiceKey 유효성 검사
         api_url = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         super().test(api_url)
 
     def CodeFinder(self, name):
@@ -30,7 +29,9 @@ class BizTradeReader(Common):
         API에 사용할 구 별 코드를 조회하는 메소드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         """
 
-        result = self.code[self.code["법정동명"].str.contains(name)][["법정동명", "법정구코드"]]
+        result = self.code[self.code["법정동명"].str.contains(name)][[
+            "법정동명", "법정구코드"
+        ]]
         result.index = range(len(result))
 
         return result
@@ -43,8 +44,7 @@ class BizTradeReader(Common):
         # URL
         url_1 = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?LAWD_CD="
-            + LAWD_CD
-        )
+            + LAWD_CD)
         url_2 = "&DEAL_YMD=" + DEAL_YMD
         url_3 = "&serviceKey=" + self.serviceKey
         url = url_1 + url_2 + url_3
@@ -85,25 +85,23 @@ class BizTradeReader(Common):
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            거래금액,
-                            건물면적,
-                            건물주용도,
-                            건축년도,
-                            구분,
-                            년,
-                            월,
-                            일,
-                            대지면적,
-                            법정동,
-                            시군구,
-                            용도지역,
-                            유형,
-                            지역코드,
-                            층,
-                        ]
-                    ],
+                    [[
+                        거래금액,
+                        건물면적,
+                        건물주용도,
+                        건축년도,
+                        구분,
+                        년,
+                        월,
+                        일,
+                        대지면적,
+                        법정동,
+                        시군구,
+                        용도지역,
+                        유형,
+                        지역코드,
+                        층,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])

@@ -13,6 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 from PublicDataReader.PublicDataPortal.__init__ import *
 
+
 class AptOwnershipReader(Common):
 
     def __init__(self, serviceKey):
@@ -21,14 +22,14 @@ class AptOwnershipReader(Common):
         api_url = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?serviceKey=" + self.serviceKey
         super().test(api_url)
 
-
     def CodeFinder(self, name):
         '''
         국토교통부 실거래가 정보 오픈API는 법정동코드 10자리 중 앞 5자리인 구를 나타내는 지역코드를 사용합니다.
         API에 사용할 구 별 코드를 조회하는 메소드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         '''
 
-        result = self.code[self.code['법정동명'].str.contains(name)][['법정동명','법정구코드']]
+        result = self.code[self.code['법정동명'].str.contains(name)][[
+            '법정동명', '법정구코드']]
         result.index = range(len(result))
 
         return result
@@ -39,9 +40,9 @@ class AptOwnershipReader(Common):
         '''
 
         # URL
-        url_1="http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?LAWD_CD="+LAWD_CD
-        url_2="&DEAL_YMD=" + DEAL_YMD
-        url_3="&serviceKey=" + self.serviceKey
+        url_1 = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?LAWD_CD="+LAWD_CD
+        url_2 = "&DEAL_YMD=" + DEAL_YMD
+        url_3 = "&serviceKey=" + self.serviceKey
         url = url_1+url_2+url_3
 
         try:
@@ -56,30 +57,32 @@ class AptOwnershipReader(Common):
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ['법정동','지역코드','시군구','단지','지번','구분','년','월','일','전용면적','층','거래금액']
+            variables = ['법정동', '지역코드', '시군구', '단지', '지번',
+                         '구분', '년', '월', '일', '전용면적', '층', '거래금액']
 
             for t in te:
                 for variable in variables:
-                    try :
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[법정동,지역코드,시군구,단지,지번,구분,년,월,일,전용면적,층,거래금액]],
-                                    columns = variables
-                                    )
+                    [[법정동, 지역코드, 시군구, 단지, 지번, 구분, 년, 월, 일, 전용면적, 층, 거래금액]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ['지역코드','법정동','거래일','시군구','단지','지번','구분','전용면적','층','거래금액']
+            colNames = ['지역코드', '법정동', '거래일', '시군구',
+                        '단지', '지번', '구분', '전용면적', '층', '거래금액']
 
             # Feature Engineering
             try:
-                if len(df['년']!=0) & len(df['월']!=0) & len(df['일']!=0):
+                if len(df['년'] != 0) & len(df['월'] != 0) & len(df['일'] != 0):
 
                     df['거래일'] = df['년'] + '-' + df['월'] + '-' + df['일']
                     df['거래일'] = pd.to_datetime(df['거래일'])
-                    df['거래금액'] = pd.to_numeric(df['거래금액'].str.replace(',',''))
+                    df['거래금액'] = pd.to_numeric(df['거래금액'].str.replace(',', ''))
 
             except:
                 df = pd.DataFrame(columns=colNames)
@@ -87,7 +90,7 @@ class AptOwnershipReader(Common):
 
             # Arange Columns
             df = df[colNames]
-            df = df.sort_values(['법정동','거래일'])
+            df = df.sort_values(['법정동', '거래일'])
             df['법정동'] = df['법정동'].str.strip()
             df.index = range(len(df))
 
@@ -111,7 +114,6 @@ class AptOwnershipReader(Common):
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-
 
     def DataCollector(self, LAWD_CD, start_date, end_date):
         '''

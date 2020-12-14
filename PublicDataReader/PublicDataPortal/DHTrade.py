@@ -4,8 +4,6 @@
 @ Github : https://github.com/WooilJeong/PublicDataReader
 @ Blog : https://wooiljeong.github.io
 """
-
-
 import datetime
 
 import numpy as np

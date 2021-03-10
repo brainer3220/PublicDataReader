@@ -1,6 +1,6 @@
 from .data import *
 
-version = "0.1.1"
+version = "2021.1.9"
 
 __version__ = f"""
 >>> PublicDataReader Version : {version}
@@ -11,11 +11,4 @@ __version__ = f"""
 - Blog : https://wooiljeong.github.io
 """
 
-__all__=['__version__', 
-         'AptTradeReader', 'AptTradeDetailReader', 
-         'AptRentReader', 'AptOwnershipReader', 
-         'OffiTradeReader', 'OffiRentReader',
-         'RHTradeReader', 'RHRentReader',
-         'DHTradeReader', 'DHRentReader',
-         'LandTradeReader', 'BizTradeReader',
-         'AirStation', 'AirDataRT', 'AirData']
+__all__=['__version__', 'Transaction']

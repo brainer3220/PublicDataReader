@@ -103,9 +103,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-
 .ipynb_checkpoints
-
 .DS_Store
-
 .api_key
+config.py
+.ipynb

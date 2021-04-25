@@ -53,8 +53,8 @@ class StoreInfo:
         입력: 상권번호
         '''
         url = f'{self.urlBase}storeZoneOne?ServiceKey={self.serviceKey}&key={key}'
-        
-        
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -83,7 +83,7 @@ class StoreInfo:
             df.columns = variables
             # Set Index
             df.index = range(len(df))
-            
+
         except:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -99,8 +99,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeZoneInRadius(self, radius, cx, cy):
@@ -109,7 +107,7 @@ class StoreInfo:
         입력: 반경(m), 중심점 경도(WGS84 좌표계), 중심점 위도(WGS84 좌표계)
         '''
         url = f'{self.urlBase}storeZoneInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -154,8 +152,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
 
     def storeZoneInRectangle(self, minx, miny, maxx, maxy):
@@ -164,7 +160,7 @@ class StoreInfo:
         입력: 서쪽 경도, 남쪽 위도, 동쪽 경도, 북쪽 위도 (WGS84 좌표계)
         '''
         url = f'{self.urlBase}storeZoneInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -209,8 +205,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df        
         
     def storeZoneInAdmi(self, divId, key):
@@ -221,7 +215,7 @@ class StoreInfo:
         행정구역코드 - 시도(시도코드값), 시군구(시군구코드값), 행정동(행정동코드값)
         '''
         url = f'{self.urlBase}storeZoneInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -266,8 +260,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
 
     def storeOne(self, key):
@@ -276,7 +268,7 @@ class StoreInfo:
         입력: 상가업소번호
         '''
         url = f'{self.urlBase}storeOne?ServiceKey={self.serviceKey}&key={key}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -335,8 +327,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df        
         
     def storeListInBuilding(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -348,7 +338,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -358,7 +348,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -368,14 +358,14 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
-        
+
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -434,8 +424,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
 
     def storeListInPnu(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -447,7 +435,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -457,7 +445,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -467,13 +455,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -532,8 +520,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeListInDong(self, divId, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -545,7 +531,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -555,7 +541,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -565,13 +551,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -630,8 +616,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeListInArea(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -642,7 +626,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -652,7 +636,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -662,13 +646,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -727,8 +711,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeListInRadius(self, radius, cx, cy, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -739,7 +721,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -749,7 +731,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -759,13 +741,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -824,8 +806,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeListInRectangle(self, minx, miny, maxx, maxy, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -836,7 +816,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -846,7 +826,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -856,13 +836,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -921,8 +901,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeListInPolygon(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -933,7 +911,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -943,7 +921,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -953,13 +931,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1018,8 +996,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
 
     def storeListInUpjong(self, divId, key, numOfRows=1000, pageNo=1):
@@ -1028,7 +1004,7 @@ class StoreInfo:
         입력: 구분ID(대분류:indsLclsCd, 중분류:indsMclsCd, 소분류:indsSclsCd), 업종코드값, 페이지 번호
         '''
         url = f'{self.urlBase}storeListInUpjong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1087,8 +1063,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def storeListByDate(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
@@ -1099,7 +1073,7 @@ class StoreInfo:
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대/중만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -1109,7 +1083,7 @@ class StoreInfo:
         # 중/소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
+
         # 대만 None인 경우
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -1119,13 +1093,13 @@ class StoreInfo:
         # 소만 None인 경우
         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-            
+
         # 대/중/소 모두 값이 존재하는 경우
         else:
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1184,8 +1158,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
         
     def reqStoreModify(self,bizresId,bizresNm,brchNm,indsSclsCd,adongCd,lnoAdr,rdnmAdr,bldNm,dongNo,flrNo,hoNo,opbizDt,clbizDt,etcChgReqCnts):
@@ -1239,8 +1211,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-        
         return df
 
 #     def storeStatsUpjongInAdmi(self, divId, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None):
@@ -1737,7 +1707,7 @@ class StoreInfo:
         21. 상권정보 업종 대분류 조회
         '''
         url = f'{self.urlBase}largeUpjongList?ServiceKey={self.serviceKey}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1782,8 +1752,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-
         return df
 
     def middleUpjongList(self, indsLclsCd_):
@@ -1792,7 +1760,7 @@ class StoreInfo:
         입력: 상권업종 업종 대분류코드
         '''
         url = f'{self.urlBase}middleUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}'
-        
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1837,8 +1805,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-
         return df
     
     def smallUpjongList(self, indsLclsCd_=None, indsMclsCd_=None):
@@ -1850,18 +1816,17 @@ class StoreInfo:
         if (indsLclsCd_!=None) & (indsMclsCd_==None):
             url = f'{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}'
 
-        elif (indsLclsCd_==None) & (indsMclsCd_!=None):
-            url = f'{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsMclsCd={indsMclsCd_}'
-        
-        elif (indsLclsCd_!=None) & (indsMclsCd_!=None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (
+            indsLclsCd_ != None
+        ) & (indsMclsCd_ != None):
             url = f'{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsMclsCd={indsMclsCd_}'
 
         else:
             print(">> Parameters None")
             return 0
-        
-        
-        
+
+
+
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1906,6 +1871,4 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
-
         return df

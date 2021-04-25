@@ -171,13 +171,13 @@ class Transaction:
             df['법정동'] = df['법정동'].str.strip()
             df['아파트'] = df['아파트'].str.strip()
             df.index = range(len(df))
-            
+
             # 형 변환
             cols = df.columns.drop(['법정동','거래일','아파트','지번'])
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -191,7 +191,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
 
 
     def AptTradeDetail(self, LAWD_CD, DEAL_YMD):
@@ -266,7 +265,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -280,10 +279,9 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-            pass
 
 
-    def AptRent(self, LAWD_CD, DEAL_YMD):        
+    def AptRent(self, LAWD_CD, DEAL_YMD):
         '''
         03 아파트 전월세 자료 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -357,20 +355,18 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
 
-    def AptOwnership(self, LAWD_CD, DEAL_YMD):        
+    def AptOwnership(self, LAWD_CD, DEAL_YMD):
         '''
         04 아파트 분양권전매 신고 자료 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -407,7 +403,7 @@ class Transaction:
                                     columns = variables
                                     )
                 df = pd.concat([df, data])
-            
+
             # Set Columns
             colNames = ['지역코드','법정동','거래일','시군구','단지','지번','구분','전용면적','층','거래금액']
 
@@ -454,11 +450,9 @@ class Transaction:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
 
-            pass
 
 
-
-    def OffiTrade(self, LAWD_CD, DEAL_YMD):        
+    def OffiTrade(self, LAWD_CD, DEAL_YMD):
         '''
         05 오피스텔 매매 신고 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -522,7 +516,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -533,19 +527,17 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
-    def OffiRent(self, LAWD_CD, DEAL_YMD):        
+    def OffiRent(self, LAWD_CD, DEAL_YMD):
         '''
         06 오피스텔 전월세 신고 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -609,7 +601,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -620,19 +612,17 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
-    def RHTrade(self, LAWD_CD, DEAL_YMD):        
+    def RHTrade(self, LAWD_CD, DEAL_YMD):
         '''
         07 연립다세대 매매 실거래자료 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -695,7 +685,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -706,20 +696,18 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
 
-    def RHRent(self, LAWD_CD, DEAL_YMD):        
+    def RHRent(self, LAWD_CD, DEAL_YMD):
         '''
         08 연립다세대 전월세 실거래자료 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -783,7 +771,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -794,20 +782,18 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
 
-    def DHTrade(self, LAWD_CD, DEAL_YMD):        
+    def DHTrade(self, LAWD_CD, DEAL_YMD):
         '''
         09 단독/다가구 매매 실거래 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -870,7 +856,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -881,20 +867,18 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
 
-    def DHRent(self, LAWD_CD, DEAL_YMD):        
+    def DHRent(self, LAWD_CD, DEAL_YMD):
         '''
         10 단독/다가구 전월세 자료 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -958,7 +942,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -969,20 +953,18 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
 
-    def LandTrade(self, LAWD_CD, DEAL_YMD):        
+    def LandTrade(self, LAWD_CD, DEAL_YMD):
         '''
         11 토지 매매 신고 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -1045,7 +1027,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -1056,20 +1038,18 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass
 
 
 
-    def BizTrade(self, LAWD_CD, DEAL_YMD):        
+    def BizTrade(self, LAWD_CD, DEAL_YMD):
         '''
         12 상업업무용 부동산 매매 신고 자료 조회
         입력: 지역코드(법정동코드 5자리), 계약월(YYYYmm)
@@ -1132,7 +1112,7 @@ class Transaction:
             df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
 
             return df
-        
+
         except:
 
             # Get raw data
@@ -1143,13 +1123,11 @@ class Transaction:
 
             # Filtering
             te = xmlsoup.findAll("header")
-            
+
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find('resultCode').text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
-            
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-                
-            pass

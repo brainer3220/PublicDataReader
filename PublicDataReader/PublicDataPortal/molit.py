@@ -35,52 +35,40 @@ class Transaction:
         # ServiceKey 유효성 검사
         self.urlAptTrade = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlAptTradeDetail = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlAptRent = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlAptOwnership = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlOffiTrade = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlOffiRent = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlRHTrade = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlRHRent = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlDHTrade = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlDHRent = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlLandTrade = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcLandTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlBizTrade = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
 
         # Open API URL Dict
         urlDict = {
@@ -121,7 +109,9 @@ class Transaction:
         국토교통부 실거래가 정보 오픈API는 법정동코드 10자리 중 앞 5자리인 구를 나타내는 지역코드를 사용합니다.
         API에 사용할 구 별 코드를 조회하는 메서드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         """
-        result = self.code[self.code["법정동명"].str.contains(name)][["법정동명", "법정구코드"]]
+        result = self.code[self.code["법정동명"].str.contains(name)][[
+            "법정동명", "법정구코드"
+        ]]
         result.index = range(len(result))
         return result
 
@@ -198,7 +188,9 @@ class Transaction:
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "아파트", "지번", "전용면적", "층", "건축년도", "거래금액"]
+            colNames = [
+                "지역코드", "법정동", "거래일", "아파트", "지번", "전용면적", "층", "건축년도", "거래금액"
+            ]
 
             # Feature Engineering
             try:
@@ -290,33 +282,31 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            거래금액,
-                            건축년도,
-                            년,
-                            도로명,
-                            도로명건물본번호코드,
-                            도로명건물부번호코드,
-                            도로명시군구코드,
-                            도로명일련번호코드,
-                            도로명지상지하코드,
-                            도로명코드,
-                            법정동,
-                            법정동본번코드,
-                            법정동부번코드,
-                            법정동시군구코드,
-                            법정동읍면동코드,
-                            법정동지번코드,
-                            아파트,
-                            월,
-                            일,
-                            전용면적,
-                            지번,
-                            지역코드,
-                            층,
-                        ]
-                    ],
+                    [[
+                        거래금액,
+                        건축년도,
+                        년,
+                        도로명,
+                        도로명건물본번호코드,
+                        도로명건물부번호코드,
+                        도로명시군구코드,
+                        도로명일련번호코드,
+                        도로명지상지하코드,
+                        도로명코드,
+                        법정동,
+                        법정동본번코드,
+                        법정동부번코드,
+                        법정동시군구코드,
+                        법정동읍면동코드,
+                        법정동지번코드,
+                        아파트,
+                        월,
+                        일,
+                        전용면적,
+                        지번,
+                        지역코드,
+                        층,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -648,7 +638,9 @@ class Transaction:
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "시군구", "단지", "지번", "전용면적", "층", "거래금액"]
+            colNames = [
+                "지역코드", "법정동", "거래일", "시군구", "단지", "지번", "전용면적", "층", "거래금액"
+            ]
 
             # Feature Engineering
             try:
@@ -948,7 +940,10 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 연립다세대, 지번, 년, 월, 일, 전용면적, 건축년도, 층, 보증금액, 월세금액]],
+                    [[
+                        법정동, 지역코드, 연립다세대, 지번, 년, 월, 일, 전용면적, 건축년도, 층, 보증금액,
+                        월세금액
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1059,7 +1054,9 @@ class Transaction:
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "주택유형", "대지면적", "연면적", "건축년도", "거래금액"]
+            colNames = [
+                "지역코드", "법정동", "거래일", "주택유형", "대지면적", "연면적", "건축년도", "거래금액"
+            ]
 
             # Feature Engineering
             try:
@@ -1134,9 +1131,8 @@ class Transaction:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame(
-                    [[법정동, 지역코드, 년, 월, 일, 계약면적, 보증금액, 월세금액]], columns=variables
-                )
+                data = pd.DataFrame([[법정동, 지역코드, 년, 월, 일, 계약면적, 보증금액, 월세금액]],
+                                    columns=variables)
                 df = pd.concat([df, data])
 
             # Set Columns
@@ -1266,7 +1262,8 @@ class Transaction:
             df.index = range(len(df))
 
             # 숫자형 변환
-            cols = df.columns.drop(["법정동", "거래일", "시군구", "용도지역", "지목", "지분거래구분"])
+            cols = df.columns.drop(
+                ["법정동", "거래일", "시군구", "용도지역", "지목", "지분거래구분"])
             df[cols] = df[cols].apply(pd.to_numeric, errors="coerce")
 
             return df
@@ -1337,25 +1334,23 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            거래금액,
-                            건물면적,
-                            건물주용도,
-                            건축년도,
-                            구분,
-                            년,
-                            월,
-                            일,
-                            대지면적,
-                            법정동,
-                            시군구,
-                            용도지역,
-                            유형,
-                            지역코드,
-                            층,
-                        ]
-                    ],
+                    [[
+                        거래금액,
+                        건물면적,
+                        건물주용도,
+                        건축년도,
+                        구분,
+                        년,
+                        월,
+                        일,
+                        대지면적,
+                        법정동,
+                        시군구,
+                        용도지역,
+                        유형,
+                        지역코드,
+                        층,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1396,7 +1391,8 @@ class Transaction:
             df.index = range(len(df))
 
             # 숫자형 변환
-            cols = df.columns.drop(["법정동", "거래일", "시군구", "용도지역", "유형", "건물주용도"])
+            cols = df.columns.drop(
+                ["법정동", "거래일", "시군구", "용도지역", "유형", "건물주용도"])
             df[cols] = df[cols].apply(pd.to_numeric, errors="coerce")
 
             return df

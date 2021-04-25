@@ -27,7 +27,6 @@ semas(Small Enterprise And Market Service)
     22. middleUpjongList: 상권정보 업종 중분류 조회
     23. smallUpjongList: 상권정보 업종 소분류 조회
 """
-
 import datetime
 
 import numpy as np

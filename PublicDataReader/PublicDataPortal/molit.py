@@ -16,7 +16,6 @@ molit(Ministry of Land, Infrastructure and Transport)
     - LandTrade: 토지 매매 신고 조회
     - BizTrade: 상업업무용 부동산 매매 신고 자료 조회
 """
-
 import datetime
 
 import numpy as np

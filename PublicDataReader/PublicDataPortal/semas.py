@@ -34,6 +34,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
+
 class StoreInfo:
     def __init__(self, serviceKey):
         '''
@@ -44,16 +45,15 @@ class StoreInfo:
 
         # ServiceKey 등록
         self.urlBase = f'http://apis.data.go.kr/B553077/api/open/sdsc/'
-        
+
         print('>> Open API Services initialized!')
-        
+
     def storeZoneOne(self, key):
         '''
         1. 지정 상권조회
         입력: 상권번호
         '''
         url = f'{self.urlBase}storeZoneOne?ServiceKey={self.serviceKey}&key={key}'
-
 
         try:
             # Get raw data
@@ -64,19 +64,21 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['trarNo','mainTrarNm','ctprvnCd','ctprvnNm','signguCd','signguNm','trarArea','coordNum','coords','stdrDt']
+            df = pd.DataFrame()
+            variables = ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm',
+                         'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[trarNo,mainTrarNm,ctprvnCd,ctprvnNm,signguCd,signguNm,trarArea,coordNum,coords,stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[trarNo, mainTrarNm, ctprvnCd, ctprvnNm, signguCd,
+                        signguNm, trarArea, coordNum, coords, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -100,7 +102,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeZoneInRadius(self, radius, cx, cy):
         '''
         2. 반경내 상권조회
@@ -117,19 +119,21 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['trarNo','mainTrarNm','ctprvnCd','ctprvnNm','signguCd','signguNm','trarArea','coordNum','coords','stdrDt']
+            df = pd.DataFrame()
+            variables = ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm',
+                         'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[trarNo,mainTrarNm,ctprvnCd,ctprvnNm,signguCd,signguNm,trarArea,coordNum,coords,stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[trarNo, mainTrarNm, ctprvnCd, ctprvnNm, signguCd,
+                        signguNm, trarArea, coordNum, coords, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -170,19 +174,21 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['trarNo','mainTrarNm','ctprvnCd','ctprvnNm','signguCd','signguNm','trarArea','coordNum','coords','stdrDt']
+            df = pd.DataFrame()
+            variables = ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm',
+                         'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[trarNo,mainTrarNm,ctprvnCd,ctprvnNm,signguCd,signguNm,trarArea,coordNum,coords,stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[trarNo, mainTrarNm, ctprvnCd, ctprvnNm, signguCd,
+                        signguNm, trarArea, coordNum, coords, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -205,8 +211,8 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-        return df        
-        
+        return df
+
     def storeZoneInAdmi(self, divId, key):
         '''
         4. 행정구역 단위 상권조회
@@ -225,19 +231,21 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['trarNo','mainTrarNm','ctprvnCd','ctprvnNm','signguCd','signguNm','trarArea','coordNum','coords','stdrDt']
+            df = pd.DataFrame()
+            variables = ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm',
+                         'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[trarNo,mainTrarNm,ctprvnCd,ctprvnNm,signguCd,signguNm,trarArea,coordNum,coords,stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[trarNo, mainTrarNm, ctprvnCd, ctprvnNm, signguCd,
+                        signguNm, trarArea, coordNum, coords, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -278,33 +286,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -327,14 +335,14 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
-        return df        
-        
+        return df
+
     def storeListInBuilding(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         6. 건물단위 상가업소 조회
         입력: 건물관리번호, 상권업종대분류코드, 상권업종중분류코드, 상권업종소분류코드, 페이지당 건수(최대 1000), 페이지 번호
         '''
-        
+
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -363,9 +371,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -375,33 +380,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
+            for t in te:
                 for variable in variables:
                     try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -431,7 +436,7 @@ class StoreInfo:
         7. 지번단위 상가업소 조회
         입력: PNU코드, 상권업종대분류코드, 상권업종중분류코드, 상권업종소분류코드, 페이지 번호
         '''
-        
+
         # 대/중/소 모두 None인 경우
         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}'
@@ -460,8 +465,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -471,33 +474,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -521,7 +524,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeListInDong(self, divId, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         8. 행정동 단위 상가업소 조회
@@ -556,8 +559,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -567,33 +568,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -617,7 +618,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeListInArea(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         9. 상권내 상가업소 조회
@@ -651,8 +652,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -662,33 +661,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -712,7 +711,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeListInRadius(self, radius, cx, cy, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         10. 반경내 상가업소 조회
@@ -746,8 +745,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -757,33 +754,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -807,7 +804,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeListInRectangle(self, minx, miny, maxx, maxy, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         11. 사각형내 상가업소 조회
@@ -841,8 +838,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -852,33 +847,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -902,7 +897,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeListInPolygon(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         12. 다각형내 상가업소 조회
@@ -936,8 +931,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -947,33 +940,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -1014,33 +1007,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -1064,7 +1057,7 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
+
     def storeListByDate(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1):
         '''
         14. 수정일자기준 상가업소 조회
@@ -1098,8 +1091,6 @@ class StoreInfo:
         else:
             url = f'{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}'
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1109,33 +1100,33 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
-                         'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
-                         'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
-                         'adongCd','adongNm','ldongCd','ldongNm','lnoCd',
-                         'plotSctCd','plotSctNm','lnoMnno','lnoSlno','lnoAdr',
-                         'rdnmCd','rdnm','bldMnno','bldSlno','bldMngNo',
-                         'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
-                         'flrNo','hoNo','lon','lat']
+            df = pd.DataFrame()
+            variables = ['bizesId', 'bizesNm', 'brchNm', 'indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'ksicCd',
+                         'ksicNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm',
+                         'adongCd', 'adongNm', 'ldongCd', 'ldongNm', 'lnoCd',
+                         'plotSctCd', 'plotSctNm', 'lnoMnno', 'lnoSlno', 'lnoAdr',
+                         'rdnmCd', 'rdnm', 'bldMnno', 'bldSlno', 'bldMngNo',
+                         'bldNm', 'rdnmAdr', 'oldZipcd', 'newZipcd', 'dongNo',
+                         'flrNo', 'hoNo', 'lon', 'lat']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizesId,bizesNm,brchNm,indsLclsCd,indsLclsNm,
-                                     indsMclsCd,indsMclsNm,indsSclsCd,indsSclsNm,ksicCd,
-                                     ksicNm,ctprvnCd,ctprvnNm,signguCd,signguNm,
-                                     adongCd,adongNm,ldongCd,ldongNm,lnoCd,
-                                     plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
-                                     rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
-                                     bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-                                     flrNo,hoNo,lon,lat]], 
-                                    columns = variables
-                                    )
+                    [[bizesId, bizesNm, brchNm, indsLclsCd, indsLclsNm,
+                      indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, ksicCd,
+                      ksicNm, ctprvnCd, ctprvnNm, signguCd, signguNm,
+                      adongCd, adongNm, ldongCd, ldongNm, lnoCd,
+                      plotSctCd, plotSctNm, lnoMnno, lnoSlno, lnoAdr,
+                      rdnmCd, rdnm, bldMnno, bldSlno, bldMngNo,
+                      bldNm, rdnmAdr, oldZipcd, newZipcd, dongNo,
+                      flrNo, hoNo, lon, lat]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -1159,8 +1150,8 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-        
-    def reqStoreModify(self,bizresId,bizresNm,brchNm,indsSclsCd,adongCd,lnoAdr,rdnmAdr,bldNm,dongNo,flrNo,hoNo,opbizDt,clbizDt,etcChgReqCnts):
+
+    def reqStoreModify(self, bizresId, bizresNm, brchNm, indsSclsCd, adongCd, lnoAdr, rdnmAdr, bldNm, dongNo, flrNo, hoNo, opbizDt, clbizDt, etcChgReqCnts):
         '''
         15. 상가업소정보 변경요청
         입력: 상가업소번호, 상호명, 지점명, 상권업종소분류코드, 행정동코드, 지번주소, 도로명주소, 건물명, 동정보, 층정보, 호정보, 개업일자, 폐업일자, 기타입력사항
@@ -1176,19 +1167,19 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
+            df = pd.DataFrame()
             variables = ['bizresId', 'result', 'message']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[bizresId, result, message]], 
-                                    columns = variables
-                                    )
+                    [[bizresId, result, message]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -1221,7 +1212,7 @@ class StoreInfo:
 #         # 대/중/소 모두 None인 경우
 #         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}'
-        
+
 #         # 대/중만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}'
@@ -1231,7 +1222,7 @@ class StoreInfo:
 #         # 중/소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsLclsCd={indsLclsCd_}'
-        
+
 #         # 대만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}'
@@ -1241,13 +1232,13 @@ class StoreInfo:
 #         # 소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsMclsCd={indsMclsCd_}'
-            
+
 #         # 대/중/소 모두 값이 존재하는 경우
 #         else:
 #             url = f'{self.urlBase}storeStatsUpjongInAdmi?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}'
-        
-#         
-        
+
+#
+
 #         try:
 #             # Get raw data
 #             result = requests.get(url, verify=False)
@@ -1257,7 +1248,7 @@ class StoreInfo:
 #             te = xmlsoup.findAll("item")
 
 #             # Creating Pandas Data Frame
-#             df = pd.DataFrame()    
+#             df = pd.DataFrame()
 #             variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
 #                          'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
 #                          'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
@@ -1267,8 +1258,8 @@ class StoreInfo:
 #                          'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
 #                          'flrNo','hoNo','lon','lat']
 
-#             for t in te: 
-#                 for variable in variables:       
+#             for t in te:
+#                 for variable in variables:
 #                     try :
 #                         globals()[variable] = t.find(variable).text
 #                     except :
@@ -1281,7 +1272,7 @@ class StoreInfo:
 #                                      plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
 #                                      rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
 #                                      bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-#                                      flrNo,hoNo,lon,lat]], 
+#                                      flrNo,hoNo,lon,lat]],
 #                                     columns = variables
 #                                     )
 #                 df = pd.concat([df, data])
@@ -1307,9 +1298,9 @@ class StoreInfo:
 #             else:
 #                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
 #             pass
-        
-#         return df        
-        
+
+#         return df
+
 
 #     def storeStatsUpjongInBuilding(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None):
 #         '''
@@ -1319,7 +1310,7 @@ class StoreInfo:
 #         # 대/중/소 모두 None인 경우
 #         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&key={key}'
-        
+
 #         # 대/중만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}'
@@ -1329,7 +1320,7 @@ class StoreInfo:
 #         # 중/소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}'
-        
+
 #         # 대만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}'
@@ -1339,13 +1330,13 @@ class StoreInfo:
 #         # 소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}'
-            
+
 #         # 대/중/소 모두 값이 존재하는 경우
 #         else:
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}'
-        
-#         
-        
+
+#
+
 #         try:
 #             # Get raw data
 #             result = requests.get(url, verify=False)
@@ -1355,7 +1346,7 @@ class StoreInfo:
 #             te = xmlsoup.findAll("item")
 
 #             # Creating Pandas Data Frame
-#             df = pd.DataFrame()    
+#             df = pd.DataFrame()
 #             variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
 #                          'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
 #                          'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
@@ -1365,8 +1356,8 @@ class StoreInfo:
 #                          'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
 #                          'flrNo','hoNo','lon','lat']
 
-#             for t in te: 
-#                 for variable in variables:       
+#             for t in te:
+#                 for variable in variables:
 #                     try :
 #                         globals()[variable] = t.find(variable).text
 #                     except :
@@ -1379,7 +1370,7 @@ class StoreInfo:
 #                                      plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
 #                                      rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
 #                                      bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-#                                      flrNo,hoNo,lon,lat]], 
+#                                      flrNo,hoNo,lon,lat]],
 #                                     columns = variables
 #                                     )
 #                 df = pd.concat([df, data])
@@ -1417,7 +1408,7 @@ class StoreInfo:
 #         # 대/중/소 모두 None인 경우
 #         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}'
-        
+
 #         # 대/중만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}'
@@ -1427,7 +1418,7 @@ class StoreInfo:
 #         # 중/소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}'
-        
+
 #         # 대만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}'
@@ -1437,13 +1428,13 @@ class StoreInfo:
 #         # 소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsMclsCd={indsMclsCd_}'
-            
+
 #         # 대/중/소 모두 값이 존재하는 경우
 #         else:
 #             url = f'{self.urlBase}storeStatsUpjongInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}'
-        
-#         
-        
+
+#
+
 #         try:
 #             # Get raw data
 #             result = requests.get(url, verify=False)
@@ -1453,7 +1444,7 @@ class StoreInfo:
 #             te = xmlsoup.findAll("item")
 
 #             # Creating Pandas Data Frame
-#             df = pd.DataFrame()    
+#             df = pd.DataFrame()
 #             variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
 #                          'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
 #                          'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
@@ -1463,8 +1454,8 @@ class StoreInfo:
 #                          'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
 #                          'flrNo','hoNo','lon','lat']
 
-#             for t in te: 
-#                 for variable in variables:       
+#             for t in te:
+#                 for variable in variables:
 #                     try :
 #                         globals()[variable] = t.find(variable).text
 #                     except :
@@ -1477,7 +1468,7 @@ class StoreInfo:
 #                                      plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
 #                                      rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
 #                                      bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-#                                      flrNo,hoNo,lon,lat]], 
+#                                      flrNo,hoNo,lon,lat]],
 #                                     columns = variables
 #                                     )
 #                 df = pd.concat([df, data])
@@ -1505,7 +1496,7 @@ class StoreInfo:
 #             pass
 
 #         return df
-        
+
 #     def storeStatsUpjongInRectangle(self, minx, miny, maxx, maxy, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None):
 #         '''
 #         19. 사각형내 업종별 상가업소 통계
@@ -1514,7 +1505,7 @@ class StoreInfo:
 #         # 대/중/소 모두 None인 경우
 #         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInRectangle?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}'
-        
+
 #         # 대/중만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInRectangle?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}'
@@ -1524,7 +1515,7 @@ class StoreInfo:
 #         # 중/소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInRectangle?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}'
-        
+
 #         # 대만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInRectangle?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}'
@@ -1534,13 +1525,13 @@ class StoreInfo:
 #         # 소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInRectangle?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsMclsCd={indsMclsCd_}'
-            
+
 #         # 대/중/소 모두 값이 존재하는 경우
 #         else:
 #             url = f'{self.urlBase}storeStatsUpjongInBuilding?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}'
-        
-#         
-        
+
+#
+
 #         try:
 #             # Get raw data
 #             result = requests.get(url, verify=False)
@@ -1550,7 +1541,7 @@ class StoreInfo:
 #             te = xmlsoup.findAll("item")
 
 #             # Creating Pandas Data Frame
-#             df = pd.DataFrame()    
+#             df = pd.DataFrame()
 #             variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
 #                          'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
 #                          'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
@@ -1560,8 +1551,8 @@ class StoreInfo:
 #                          'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
 #                          'flrNo','hoNo','lon','lat']
 
-#             for t in te: 
-#                 for variable in variables:       
+#             for t in te:
+#                 for variable in variables:
 #                     try :
 #                         globals()[variable] = t.find(variable).text
 #                     except :
@@ -1574,7 +1565,7 @@ class StoreInfo:
 #                                      plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
 #                                      rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
 #                                      bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-#                                      flrNo,hoNo,lon,lat]], 
+#                                      flrNo,hoNo,lon,lat]],
 #                                     columns = variables
 #                                     )
 #                 df = pd.concat([df, data])
@@ -1602,9 +1593,8 @@ class StoreInfo:
 #             pass
 
 #         return df
-        
-        
-        
+
+
 #     def storeStatsUpjongInPolygon(self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None):
 #         '''
 #         20. 다각형내 업종별 상가업소 통계
@@ -1613,7 +1603,7 @@ class StoreInfo:
 #         # 대/중/소 모두 None인 경우
 #         if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInPolygon?ServiceKey={self.serviceKey}&key={key}'
-        
+
 #         # 대/중만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}'
@@ -1623,7 +1613,7 @@ class StoreInfo:
 #         # 중/소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInPolygon?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}'
-        
+
 #         # 대만 None인 경우
 #         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
 #             url = f'{self.urlBase}storeStatsUpjongInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}'
@@ -1633,13 +1623,13 @@ class StoreInfo:
 #         # 소만 None인 경우
 #         elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
 #             url = f'{self.urlBase}storeStatsUpjongInPolygon?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}'
-            
+
 #         # 대/중/소 모두 값이 존재하는 경우
 #         else:
 #             url = f'{self.urlBase}storeStatsUpjongInPolygon?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&indsMclsCd={indsMclsCd_}&indsSclsCd={indsSclsCd_}'
-        
-#         
-        
+
+#
+
 #         try:
 #             # Get raw data
 #             result = requests.get(url, verify=False)
@@ -1649,7 +1639,7 @@ class StoreInfo:
 #             te = xmlsoup.findAll("item")
 
 #             # Creating Pandas Data Frame
-#             df = pd.DataFrame()    
+#             df = pd.DataFrame()
 #             variables = ['bizesId','bizesNm','brchNm','indsLclsCd','indsLclsNm',
 #                          'indsMclsCd','indsMclsNm','indsSclsCd','indsSclsNm','ksicCd',
 #                          'ksicNm','ctprvnCd','ctprvnNm','signguCd','signguNm',
@@ -1659,8 +1649,8 @@ class StoreInfo:
 #                          'bldNm','rdnmAdr','oldZipcd','newZipcd','dongNo',
 #                          'flrNo','hoNo','lon','lat']
 
-#             for t in te: 
-#                 for variable in variables:       
+#             for t in te:
+#                 for variable in variables:
 #                     try :
 #                         globals()[variable] = t.find(variable).text
 #                     except :
@@ -1673,7 +1663,7 @@ class StoreInfo:
 #                                      plotSctCd,plotSctNm,lnoMnno,lnoSlno,lnoAdr,
 #                                      rdnmCd,rdnm,bldMnno,bldSlno,bldMngNo,
 #                                      bldNm,rdnmAdr,oldZipcd,newZipcd,dongNo,
-#                                      flrNo,hoNo,lon,lat]], 
+#                                      flrNo,hoNo,lon,lat]],
 #                                     columns = variables
 #                                     )
 #                 df = pd.concat([df, data])
@@ -1701,7 +1691,7 @@ class StoreInfo:
 #             pass
 
 #         return df
-        
+
     def largeUpjongList(self):
         '''
         21. 상권정보 업종 대분류 조회
@@ -1717,19 +1707,19 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
+            df = pd.DataFrame()
             variables = ['indsLclsCd', 'indsLclsNm', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[indsLclsCd, indsLclsNm, stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[indsLclsCd, indsLclsNm, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -1770,19 +1760,20 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['indsLclsCd', 'indsLclsNm', 'indsMclsCd', 'indsMclsNm', 'stdrDt']
+            df = pd.DataFrame()
+            variables = ['indsLclsCd', 'indsLclsNm',
+                         'indsMclsCd', 'indsMclsNm', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[indsLclsCd, indsLclsNm, indsMclsCd, indsMclsNm, stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[indsLclsCd, indsLclsNm, indsMclsCd, indsMclsNm, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -1806,14 +1797,14 @@ class StoreInfo:
             else:
                 print(">>> Open API Error: {}".format(te[0].find['resultMsg']))
         return df
-    
+
     def smallUpjongList(self, indsLclsCd_=None, indsMclsCd_=None):
         '''
         23. 상권정보 업종 소분류 조회
         입력: 상권정보 업종 대분류코드, 상권정보 업종 중분류코드
         '''
-        
-        if (indsLclsCd_!=None) & (indsMclsCd_==None):
+
+        if (indsLclsCd_ != None) & (indsMclsCd_ == None):
             url = f'{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}'
 
         elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (
@@ -1825,8 +1816,6 @@ class StoreInfo:
             print(">> Parameters None")
             return 0
 
-
-
         try:
             # Get raw data
             result = requests.get(url, verify=False)
@@ -1836,19 +1825,21 @@ class StoreInfo:
             te = xmlsoup.findAll("item")
 
             # Creating Pandas Data Frame
-            df = pd.DataFrame()    
-            variables = ['indsLclsCd', 'indsLclsNm', 'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'stdrDt']
+            df = pd.DataFrame()
+            variables = ['indsLclsCd', 'indsLclsNm', 'indsMclsCd',
+                         'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'stdrDt']
 
-            for t in te: 
-                for variable in variables:       
-                    try :
+            for t in te:
+                for variable in variables:
+                    try:
                         globals()[variable] = t.find(variable).text
-                    except :
+                    except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                                    [[indsLclsCd, indsLclsNm, indsMclsCd, indsMclsNm, indsSclsCd, indsSclsNm, stdrDt]], 
-                                    columns = variables
-                                    )
+                    [[indsLclsCd, indsLclsNm, indsMclsCd,
+                        indsMclsNm, indsSclsCd, indsSclsNm, stdrDt]],
+                    columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names

@@ -28,9 +28,10 @@ semas(Small Enterprise And Market Service)
     23. smallUpjongList: 상권정보 업종 소분류 조회
 """
 
-import pandas as pd
-import numpy as np
 import datetime
+
+import numpy as np
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 

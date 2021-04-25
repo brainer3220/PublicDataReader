@@ -17,9 +17,10 @@ molit(Ministry of Land, Infrastructure and Transport)
     - BizTrade: 상업업무용 부동산 매매 신고 자료 조회
 """
 
-import pandas as pd
-import numpy as np
 import datetime
+
+import numpy as np
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 

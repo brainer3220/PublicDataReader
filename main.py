@@ -84,7 +84,8 @@ if __name__ == "__main__":
     indsLclsCd = "Q"
     pageNo = 1
 
-    df = semas.storeListInDong(divId=divId, key=key, indsLclsCd_=indsLclsCd, pageNo=pageNo)
+    df = semas.storeListInDong(
+        divId=divId, key=key, indsLclsCd_=indsLclsCd, pageNo=pageNo)
     print(df.head())
 
     # 09 상권내 상가업소 조회
@@ -108,7 +109,8 @@ if __name__ == "__main__":
     indsLclsCd = "Q"
     pageNo = "1"
 
-    df = semas.storeListInRadius(radius=radius, cx=cx, cy=cy, indsLclsCd_=indsLclsCd, pageNo=pageNo)
+    df = semas.storeListInRadius(
+        radius=radius, cx=cx, cy=cy, indsLclsCd_=indsLclsCd, pageNo=pageNo)
     print(df.head())
 
     # 11. 사각형내 상가업소 조회

@@ -4,7 +4,6 @@
 1. TransInfo 클래스: 서울시 교통 관련 정보 조회
 
 """
-
 import datetime
 
 import numpy as np

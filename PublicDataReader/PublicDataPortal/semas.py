@@ -85,20 +85,18 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            trarNo,
-                            mainTrarNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            trarArea,
-                            coordNum,
-                            coords,
-                            stdrDt,
-                        ]
-                    ],
+                    [[
+                        trarNo,
+                        mainTrarNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        trarArea,
+                        coordNum,
+                        coords,
+                        stdrDt,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -162,20 +160,18 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            trarNo,
-                            mainTrarNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            trarArea,
-                            coordNum,
-                            coords,
-                            stdrDt,
-                        ]
-                    ],
+                    [[
+                        trarNo,
+                        mainTrarNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        trarArea,
+                        coordNum,
+                        coords,
+                        stdrDt,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -239,20 +235,18 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            trarNo,
-                            mainTrarNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            trarArea,
-                            coordNum,
-                            coords,
-                            stdrDt,
-                        ]
-                    ],
+                    [[
+                        trarNo,
+                        mainTrarNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        trarArea,
+                        coordNum,
+                        coords,
+                        stdrDt,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -318,20 +312,18 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            trarNo,
-                            mainTrarNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            trarArea,
-                            coordNum,
-                            coords,
-                            stdrDt,
-                        ]
-                    ],
+                    [[
+                        trarNo,
+                        mainTrarNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        trarArea,
+                        coordNum,
+                        coords,
+                        stdrDt,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -424,49 +416,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -508,27 +498,34 @@ class StoreInfo:
         """
 
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInBuilding?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -594,49 +591,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -678,27 +673,34 @@ class StoreInfo:
         """
 
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInPnu?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -764,49 +766,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -849,27 +849,34 @@ class StoreInfo:
         """
 
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInDong?ServiceKey={self.serviceKey}&divId={divId}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -935,49 +942,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1018,27 +1023,34 @@ class StoreInfo:
         입력: 상권번호, 상권업종 대분류코드, 상권업종 중분류코드, 상권업종 소분류코드, 페이지 번호
         """
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInArea?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -1104,49 +1116,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1189,27 +1199,34 @@ class StoreInfo:
         입력: 반경, 중심점 경도, 중심점 위도, 상권업종 대분류코드, 상권업종 중분류코드, 상권업종 소분류코드, 페이지 번호
         """
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInRadius?ServiceKey={self.serviceKey}&radius={radius}&cx={cx}&cy={cy}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -1275,49 +1292,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1361,27 +1376,34 @@ class StoreInfo:
         입력: 서쪽 경도, 남쪽 위도, 동쪽 경도, 북쪽 위도, 상권업종 대분류코드, 상권업종 중분류코드, 상권업종 소분류코드, 페이지 번호
         """
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInRectangle?ServiceKey={self.serviceKey}&minx={minx}&miny={miny}&maxx={maxx}&maxy={maxy}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -1447,49 +1469,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1530,27 +1550,34 @@ class StoreInfo:
         입력: 다각형 좌표값, 상권업종 대분류코드, 상권업종 중분류코드, 상권업종 소분류코드, 페이지 번호
         """
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListInPolygon?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -1616,49 +1643,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1751,49 +1776,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1834,27 +1857,34 @@ class StoreInfo:
         입력: 일자(YYYYMMDD), 상권업종 대분류코드, 상권업종 중분류코드, 상권업종 소분류코드, 페이지 번호
         """
         # 대/중/소 모두 None인 경우
-        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        if (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                            == None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 대/소만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중/소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsLclsCd={indsLclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대만 None인 경우
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_
+              == None) & (indsMclsCd_ != None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 중만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ == None) & (indsSclsCd_ != None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_
+                                      == None) & (indsSclsCd_ != None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsSclsCd={indsSclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
         # 소만 None인 경우
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_ == None):
+        elif (indsLclsCd_ != None) & (indsMclsCd_ != None) & (indsSclsCd_
+                                                              == None):
             url = f"{self.urlBase}storeListByDate?ServiceKey={self.serviceKey}&key={key}&indsMclsCd={indsMclsCd_}&numOfRows={numOfRows}&pageNo={pageNo}"
 
         # 대/중/소 모두 값이 존재하는 경우
@@ -1920,49 +1950,47 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bizesId,
-                            bizesNm,
-                            brchNm,
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            ksicCd,
-                            ksicNm,
-                            ctprvnCd,
-                            ctprvnNm,
-                            signguCd,
-                            signguNm,
-                            adongCd,
-                            adongNm,
-                            ldongCd,
-                            ldongNm,
-                            lnoCd,
-                            plotSctCd,
-                            plotSctNm,
-                            lnoMnno,
-                            lnoSlno,
-                            lnoAdr,
-                            rdnmCd,
-                            rdnm,
-                            bldMnno,
-                            bldSlno,
-                            bldMngNo,
-                            bldNm,
-                            rdnmAdr,
-                            oldZipcd,
-                            newZipcd,
-                            dongNo,
-                            flrNo,
-                            hoNo,
-                            lon,
-                            lat,
-                        ]
-                    ],
+                    [[
+                        bizesId,
+                        bizesNm,
+                        brchNm,
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        ksicCd,
+                        ksicNm,
+                        ctprvnCd,
+                        ctprvnNm,
+                        signguCd,
+                        signguNm,
+                        adongCd,
+                        adongNm,
+                        ldongCd,
+                        ldongNm,
+                        lnoCd,
+                        plotSctCd,
+                        plotSctNm,
+                        lnoMnno,
+                        lnoSlno,
+                        lnoAdr,
+                        rdnmCd,
+                        rdnm,
+                        bldMnno,
+                        bldSlno,
+                        bldMngNo,
+                        bldNm,
+                        rdnmAdr,
+                        oldZipcd,
+                        newZipcd,
+                        dongNo,
+                        flrNo,
+                        hoNo,
+                        lon,
+                        lat,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2030,7 +2058,8 @@ class StoreInfo:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame([[bizresId, result, message]], columns=variables)
+                data = pd.DataFrame([[bizresId, result, message]],
+                                    columns=variables)
                 df = pd.concat([df, data])
 
             # Set col names
@@ -2564,9 +2593,8 @@ class StoreInfo:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame(
-                    [[indsLclsCd, indsLclsNm, stdrDt]], columns=variables
-                )
+                data = pd.DataFrame([[indsLclsCd, indsLclsNm, stdrDt]],
+                                    columns=variables)
                 df = pd.concat([df, data])
 
             # Set col names
@@ -2659,9 +2687,8 @@ class StoreInfo:
         if (indsLclsCd_ != None) & (indsMclsCd_ == None):
             url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}"
 
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (indsLclsCd_ != None) & (
-            indsMclsCd_ != None
-        ):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (
+                indsLclsCd_ != None) & (indsMclsCd_ != None):
             url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsMclsCd={indsMclsCd_}"
 
         else:
@@ -2695,17 +2722,15 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            indsLclsCd,
-                            indsLclsNm,
-                            indsMclsCd,
-                            indsMclsNm,
-                            indsSclsCd,
-                            indsSclsNm,
-                            stdrDt,
-                        ]
-                    ],
+                    [[
+                        indsLclsCd,
+                        indsLclsNm,
+                        indsMclsCd,
+                        indsMclsNm,
+                        indsSclsCd,
+                        indsSclsNm,
+                        stdrDt,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])

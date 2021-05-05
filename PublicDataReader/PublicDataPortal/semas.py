@@ -494,7 +494,13 @@ class StoreInfo:
         return df
 
     def storeListInBuilding(
-        self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1
+        self,
+        key,
+        indsLclsCd_=None,
+        indsMclsCd_=None,
+        indsSclsCd_=None,
+        numOfRows=1000,
+        pageNo=1,
     ):
         """
         6. 건물단위 상가업소 조회
@@ -658,7 +664,13 @@ class StoreInfo:
         return df
 
     def storeListInPnu(
-        self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1
+        self,
+        key,
+        indsLclsCd_=None,
+        indsMclsCd_=None,
+        indsSclsCd_=None,
+        numOfRows=1000,
+        pageNo=1,
     ):
         """
         7. 지번단위 상가업소 조회
@@ -993,7 +1005,13 @@ class StoreInfo:
         return df
 
     def storeListInArea(
-        self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1
+        self,
+        key,
+        indsLclsCd_=None,
+        indsMclsCd_=None,
+        indsSclsCd_=None,
+        numOfRows=1000,
+        pageNo=1,
     ):
         """
         9. 상권내 상가업소 조회
@@ -1499,7 +1517,13 @@ class StoreInfo:
         return df
 
     def storeListInPolygon(
-        self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1
+        self,
+        key,
+        indsLclsCd_=None,
+        indsMclsCd_=None,
+        indsSclsCd_=None,
+        numOfRows=1000,
+        pageNo=1,
     ):
         """
         12. 다각형내 상가업소 조회
@@ -1797,7 +1821,13 @@ class StoreInfo:
         return df
 
     def storeListByDate(
-        self, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None, numOfRows=1000, pageNo=1
+        self,
+        key,
+        indsLclsCd_=None,
+        indsMclsCd_=None,
+        indsSclsCd_=None,
+        numOfRows=1000,
+        pageNo=1,
     ):
         """
         14. 수정일자기준 상가업소 조회
@@ -2000,8 +2030,7 @@ class StoreInfo:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame(
-                    [[bizresId, result, message]], columns=variables)
+                data = pd.DataFrame([[bizresId, result, message]], columns=variables)
                 df = pd.concat([df, data])
 
             # Set col names
@@ -2536,7 +2565,8 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[indsLclsCd, indsLclsNm, stdrDt]], columns=variables)
+                    [[indsLclsCd, indsLclsNm, stdrDt]], columns=variables
+                )
                 df = pd.concat([df, data])
 
             # Set col names
@@ -2566,9 +2596,7 @@ class StoreInfo:
         22. 상권정보 업종 중분류 조회
         입력: 상권업종 업종 대분류코드
         """
-        url = (
-            f"{self.urlBase}middleUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}"
-        )
+        url = f"{self.urlBase}middleUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}"
 
         try:
             # Get raw data
@@ -2580,8 +2608,13 @@ class StoreInfo:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["indsLclsCd", "indsLclsNm",
-                         "indsMclsCd", "indsMclsNm", "stdrDt"]
+            variables = [
+                "indsLclsCd",
+                "indsLclsNm",
+                "indsMclsCd",
+                "indsMclsNm",
+                "stdrDt",
+            ]
 
             for t in te:
                 for variable in variables:
@@ -2590,8 +2623,8 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[indsLclsCd, indsLclsNm, indsMclsCd,
-                        indsMclsNm, stdrDt]], columns=variables
+                    [[indsLclsCd, indsLclsNm, indsMclsCd, indsMclsNm, stdrDt]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
@@ -2626,9 +2659,9 @@ class StoreInfo:
         if (indsLclsCd_ != None) & (indsMclsCd_ == None):
             url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}"
 
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (
-            indsLclsCd_ != None
-        ) & (indsMclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (indsLclsCd_ != None) & (
+            indsMclsCd_ != None
+        ):
             url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsMclsCd={indsMclsCd_}"
 
         else:

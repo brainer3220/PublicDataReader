@@ -19,7 +19,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrBasisOulnInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrBasisOulnInfo")
     print(df.head(2))
 
@@ -35,7 +36,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrRecapTitleInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrRecapTitleInfo")
     print(df.head(1))
 
@@ -51,7 +53,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrTitleInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrTitleInfo")
     print(df.head(1))
 
@@ -67,7 +70,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrFlrOulnInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrFlrOulnInfo")
     print(df.head(1))
 
@@ -83,7 +87,8 @@ if __name__ == "__main__":
     endDate = ""
 
     df = molit.getBrAtchJibunInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrAtchJibunInfo")
 
     print(df.head(2))
@@ -119,8 +124,7 @@ if __name__ == "__main__":
     startDate = "202001"
     endDate = "202012"
 
-    df = molit.getBrWclfInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+    df = molit.getBrWclfInfo(sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
     df = molit.ChangeCols(df, "getBrWclfInfo")
 
     print(df.head(1))
@@ -137,7 +141,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrHsprcInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrHsprcInfo")
     print(df.head(2))
 
@@ -153,7 +158,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrExposInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrExposInfo")
 
     print(df.head(2))
@@ -170,7 +176,8 @@ if __name__ == "__main__":
     endDate = "202012"
 
     df = molit.getBrJijiguInfo(
-        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate)
+        sigunguCd, bjdongCd, platGbCd, bun, ji, startDate, endDate
+    )
     df = molit.ChangeCols(df, "getBrJijiguInfo")
 
     print(df.head(2))

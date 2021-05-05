@@ -239,7 +239,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def AptTradeDetail(self, LAWD_CD, DEAL_YMD):
         """
@@ -387,7 +386,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def AptRent(self, LAWD_CD, DEAL_YMD):
         """
@@ -484,8 +482,6 @@ class Transaction:
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
-            pass
-
     def AptOwnership(self, LAWD_CD, DEAL_YMD):
         """
         04 아파트 분양권전매 신고 자료 조회
@@ -567,8 +563,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-
-            pass
 
     def OffiTrade(self, LAWD_CD, DEAL_YMD):
         """
@@ -652,8 +646,6 @@ class Transaction:
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
-            pass
-
     def OffiRent(self, LAWD_CD, DEAL_YMD):
         """
         06 오피스텔 전월세 신고 조회
@@ -736,8 +728,6 @@ class Transaction:
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
-            pass
-
     def RHTrade(self, LAWD_CD, DEAL_YMD):
         """
         07 연립다세대 매매 실거래자료 조회
@@ -818,8 +808,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-
-            pass
 
     def RHRent(self, LAWD_CD, DEAL_YMD):
         """
@@ -916,8 +904,6 @@ class Transaction:
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
-            pass
-
     def DHTrade(self, LAWD_CD, DEAL_YMD):
         """
         09 단독/다가구 매매 실거래 조회
@@ -999,8 +985,6 @@ class Transaction:
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
-            pass
-
     def DHRent(self, LAWD_CD, DEAL_YMD):
         """
         10 단독/다가구 전월세 자료 조회
@@ -1080,8 +1064,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-
-            pass
 
     def LandTrade(self, LAWD_CD, DEAL_YMD):
         """
@@ -1175,8 +1157,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-
-            pass
 
     def BizTrade(self, LAWD_CD, DEAL_YMD):
         """
@@ -1289,8 +1269,6 @@ class Transaction:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-
-            pass
 
 
 class Building:
@@ -1921,7 +1899,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrRecapTitleInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -2106,7 +2083,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrTitleInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -2317,7 +2293,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrFlrOulnInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -2440,7 +2415,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrAtchJibunInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -2563,7 +2537,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrExposPubuseAreaInfo(
         self,
@@ -2707,7 +2680,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrWclfInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -2822,7 +2794,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrHsprcInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -2927,7 +2898,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrExposInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -3038,7 +3008,6 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
 
     def getBrJijiguInfo(
         self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
@@ -3131,4 +3100,3 @@ class Building:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass

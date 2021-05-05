@@ -123,8 +123,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeZoneInRadius(self, radius, cx, cy):
@@ -202,8 +200,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeZoneInRectangle(self, minx, miny, maxx, maxy):
@@ -281,8 +277,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeZoneInAdmi(self, divId, key):
@@ -362,8 +356,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeOne(self, key):
@@ -499,8 +491,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInBuilding(
@@ -665,8 +655,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInPnu(
@@ -831,8 +819,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInDong(
@@ -1004,8 +990,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInArea(
@@ -1169,8 +1153,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInRadius(
@@ -1342,8 +1324,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInRectangle(
@@ -1516,8 +1496,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInPolygon(
@@ -1681,8 +1659,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListInUpjong(self, divId, key, numOfRows=1000, pageNo=1):
@@ -1818,8 +1794,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def storeListByDate(
@@ -1983,8 +1957,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def reqStoreModify(
@@ -2051,8 +2023,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     #     def storeStatsUpjongInAdmi(self, divId, key, indsLclsCd_=None, indsMclsCd_=None, indsSclsCd_=None):
@@ -2587,8 +2557,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def middleUpjongList(self, indsLclsCd_):
@@ -2643,8 +2611,6 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df
 
     def smallUpjongList(self, indsLclsCd_=None, indsMclsCd_=None):
@@ -2656,10 +2622,9 @@ class StoreInfo:
         if (indsLclsCd_ != None) & (indsMclsCd_ == None):
             url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsLclsCd={indsLclsCd_}"
 
-        elif (indsLclsCd_ == None) & (indsMclsCd_ != None):
-            url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsMclsCd={indsMclsCd_}"
-
-        elif (indsLclsCd_ != None) & (indsMclsCd_ != None):
+        elif (indsLclsCd_ == None) & (indsMclsCd_ != None) or (
+            indsLclsCd_ != None
+        ) & (indsMclsCd_ != None):
             url = f"{self.urlBase}smallUpjongList?ServiceKey={self.serviceKey}&indsMclsCd={indsMclsCd_}"
 
         else:
@@ -2728,6 +2693,4 @@ class StoreInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
-            pass
-
         return df

@@ -92,8 +92,6 @@ class TransInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
-            pass
-
         # 전체 자료 건 수
         n_data = xmlsoup.findAll("list_total_count")[0].text
         print(f">>> 전체 자료 건 수: {n_data}")
@@ -107,7 +105,7 @@ class TransInfo:
         조건: 1회 1000건 제한        
         """
 
-        if bus_no == None:
+        if bus_no is None:
             url = f"{self.urlBase}{self.serviceKey}/xml/CardBusTimeNew/{start_index}/{end_index}/{use_mon}"
         else:
             url = f"{self.urlBase}{self.serviceKey}/xml/CardBusTimeNew/{start_index}/{end_index}/{use_mon}/{bus_no}"
@@ -283,8 +281,6 @@ class TransInfo:
             # Open API 서비스 제공처 오류
             else:
                 print(f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
-            pass
-
         # 전체 자료 건 수
         n_data = xmlsoup.findAll("list_total_count")[0].text
         print(f">>> 전체 자료 건 수: {n_data}")

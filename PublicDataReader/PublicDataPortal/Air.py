@@ -61,7 +61,6 @@ class AirStation:
         except:
             error_msg = "serviceKey Error"
             print(error_msg)
-            pass
 
     def GetList(self, addr, stationName, pageNo, numOfRows):
         """

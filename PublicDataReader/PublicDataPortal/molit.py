@@ -28,10 +28,10 @@ molit(Ministry of Land, Infrastructure and Transport)
     09 건축물대장 전유부 조회: getBrExposInfo
     10 건축물대장 지역지구구역 조회: getBrJijiguInfo
 """
-
-import pandas as pd
-import numpy as np
 import datetime
+
+import numpy as np
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
@@ -40,7 +40,6 @@ class Transaction:
     """
     부동산 실거래가 조회 클래스
     """
-
     def __init__(self, serviceKey):
         """
         공공 데이터 포털에서 발급받은 Service Key를 입력받아 초기화합니다.
@@ -51,52 +50,40 @@ class Transaction:
         # ServiceKey 유효성 검사
         self.urlAptTrade = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlAptTradeDetail = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlAptRent = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlAptOwnership = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlOffiTrade = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlOffiRent = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlRHTrade = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlRHRent = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlDHTrade = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlDHRent = (
             "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHRent?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlLandTrade = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcLandTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
         self.urlBizTrade = (
             "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?serviceKey="
-            + self.serviceKey
-        )
+            + self.serviceKey)
 
         # Open API URL Dict
         urlDict = {
@@ -137,7 +124,9 @@ class Transaction:
         국토교통부 실거래가 정보 오픈API는 법정동코드 10자리 중 앞 5자리인 구를 나타내는 지역코드를 사용합니다.
         API에 사용할 구 별 코드를 조회하는 메서드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         """
-        result = self.code[self.code["법정동명"].str.contains(name)][["법정동명", "법정구코드"]]
+        result = self.code[self.code["법정동명"].str.contains(name)][[
+            "법정동명", "법정구코드"
+        ]]
         result.index = range(len(result))
         return result
 
@@ -187,7 +176,19 @@ class Transaction:
             te = xmlsoup.findAll("item")
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["법정동", "지역코드", "아파트", "지번", "년", "월", "일", "건축년도", "전용면적", "층", "거래금액"]
+            variables = [
+                "법정동",
+                "지역코드",
+                "아파트",
+                "지번",
+                "년",
+                "월",
+                "일",
+                "건축년도",
+                "전용면적",
+                "층",
+                "거래금액",
+            ]
 
             for t in te:
                 for variable in variables:
@@ -196,12 +197,15 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 아파트, 지번, 년, 월, 일, 건축년도, 전용면적, 층, 거래금액]], columns=variables
+                    [[법정동, 지역코드, 아파트, 지번, 년, 월, 일, 건축년도, 전용면적, 층, 거래금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "아파트", "지번", "전용면적", "층", "건축년도", "거래금액"]
+            colNames = [
+                "지역코드", "법정동", "거래일", "아파트", "지번", "전용면적", "층", "건축년도", "거래금액"
+            ]
 
             # Feature Engineering
             try:
@@ -293,33 +297,31 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            거래금액,
-                            건축년도,
-                            년,
-                            도로명,
-                            도로명건물본번호코드,
-                            도로명건물부번호코드,
-                            도로명시군구코드,
-                            도로명일련번호코드,
-                            도로명지상지하코드,
-                            도로명코드,
-                            법정동,
-                            법정동본번코드,
-                            법정동부번코드,
-                            법정동시군구코드,
-                            법정동읍면동코드,
-                            법정동지번코드,
-                            아파트,
-                            월,
-                            일,
-                            전용면적,
-                            지번,
-                            지역코드,
-                            층,
-                        ]
-                    ],
+                    [[
+                        거래금액,
+                        건축년도,
+                        년,
+                        도로명,
+                        도로명건물본번호코드,
+                        도로명건물부번호코드,
+                        도로명시군구코드,
+                        도로명일련번호코드,
+                        도로명지상지하코드,
+                        도로명코드,
+                        법정동,
+                        법정동본번코드,
+                        법정동부번코드,
+                        법정동시군구코드,
+                        법정동읍면동코드,
+                        법정동지번코드,
+                        아파트,
+                        월,
+                        일,
+                        전용면적,
+                        지번,
+                        지역코드,
+                        층,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -431,12 +433,24 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 아파트, 지번, 년, 월, 일, 건축년도, 전용면적, 층, 보증금액, 월세금액]], columns=variables
+                    [[법정동, 지역코드, 아파트, 지번, 년, 월, 일, 건축년도, 전용면적, 층, 보증금액, 월세금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "아파트", "지번", "전용면적", "층", "건축년도", "보증금액", "월세금액"]
+            colNames = [
+                "지역코드",
+                "법정동",
+                "거래일",
+                "아파트",
+                "지번",
+                "전용면적",
+                "층",
+                "건축년도",
+                "보증금액",
+                "월세금액",
+            ]
 
             # Feature Engineering
             try:
@@ -505,7 +519,20 @@ class Transaction:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["법정동", "지역코드", "시군구", "단지", "지번", "구분", "년", "월", "일", "전용면적", "층", "거래금액"]
+            variables = [
+                "법정동",
+                "지역코드",
+                "시군구",
+                "단지",
+                "지번",
+                "구분",
+                "년",
+                "월",
+                "일",
+                "전용면적",
+                "층",
+                "거래금액",
+            ]
 
             for t in te:
                 for variable in variables:
@@ -514,12 +541,24 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 시군구, 단지, 지번, 구분, 년, 월, 일, 전용면적, 층, 거래금액]], columns=variables
+                    [[법정동, 지역코드, 시군구, 단지, 지번, 구분, 년, 월, 일, 전용면적, 층, 거래금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "시군구", "단지", "지번", "구분", "전용면적", "층", "거래금액"]
+            colNames = [
+                "지역코드",
+                "법정동",
+                "거래일",
+                "시군구",
+                "단지",
+                "지번",
+                "구분",
+                "전용면적",
+                "층",
+                "거래금액",
+            ]
 
             # Feature Engineering
             try:
@@ -587,7 +626,19 @@ class Transaction:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["법정동", "지역코드", "시군구", "단지", "지번", "년", "월", "일", "전용면적", "층", "거래금액"]
+            variables = [
+                "법정동",
+                "지역코드",
+                "시군구",
+                "단지",
+                "지번",
+                "년",
+                "월",
+                "일",
+                "전용면적",
+                "층",
+                "거래금액",
+            ]
 
             for t in te:
                 for variable in variables:
@@ -596,12 +647,15 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 시군구, 단지, 지번, 년, 월, 일, 전용면적, 층, 거래금액]], columns=variables
+                    [[법정동, 지역코드, 시군구, 단지, 지번, 년, 월, 일, 전용면적, 층, 거래금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "시군구", "단지", "지번", "전용면적", "층", "거래금액"]
+            colNames = [
+                "지역코드", "법정동", "거래일", "시군구", "단지", "지번", "전용면적", "층", "거래금액"
+            ]
 
             # Feature Engineering
             try:
@@ -669,7 +723,20 @@ class Transaction:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["법정동", "지역코드", "시군구", "단지", "지번", "년", "월", "일", "전용면적", "층", "보증금", "월세"]
+            variables = [
+                "법정동",
+                "지역코드",
+                "시군구",
+                "단지",
+                "지번",
+                "년",
+                "월",
+                "일",
+                "전용면적",
+                "층",
+                "보증금",
+                "월세",
+            ]
             for t in te:
                 for variable in variables:
                     try:
@@ -677,12 +744,24 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 시군구, 단지, 지번, 년, 월, 일, 전용면적, 층, 보증금, 월세]], columns=variables
+                    [[법정동, 지역코드, 시군구, 단지, 지번, 년, 월, 일, 전용면적, 층, 보증금, 월세]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "시군구", "단지", "지번", "전용면적", "층", "보증금", "월세"]
+            colNames = [
+                "지역코드",
+                "법정동",
+                "거래일",
+                "시군구",
+                "단지",
+                "지번",
+                "전용면적",
+                "층",
+                "보증금",
+                "월세",
+            ]
 
             # Feature Engineering
             try:
@@ -751,7 +830,19 @@ class Transaction:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["법정동", "지역코드", "연립다세대", "지번", "년", "월", "일", "전용면적", "건축년도", "층", "거래금액"]
+            variables = [
+                "법정동",
+                "지역코드",
+                "연립다세대",
+                "지번",
+                "년",
+                "월",
+                "일",
+                "전용면적",
+                "건축년도",
+                "층",
+                "거래금액",
+            ]
             for t in te:
                 for variable in variables:
                     try:
@@ -759,12 +850,23 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 연립다세대, 지번, 년, 월, 일, 전용면적, 건축년도, 층, 거래금액]], columns=variables
+                    [[법정동, 지역코드, 연립다세대, 지번, 년, 월, 일, 전용면적, 건축년도, 층, 거래금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "연립다세대", "지번", "전용면적", "건축년도", "층", "거래금액"]
+            colNames = [
+                "지역코드",
+                "법정동",
+                "거래일",
+                "연립다세대",
+                "지번",
+                "전용면적",
+                "건축년도",
+                "층",
+                "거래금액",
+            ]
 
             # Feature Engineering
             try:
@@ -853,12 +955,27 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 연립다세대, 지번, 년, 월, 일, 전용면적, 건축년도, 층, 보증금액, 월세금액]], columns=variables
+                    [[
+                        법정동, 지역코드, 연립다세대, 지번, 년, 월, 일, 전용면적, 건축년도, 층, 보증금액,
+                        월세금액
+                    ]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "연립다세대", "지번", "전용면적", "건축년도", "층", "보증금액", "월세금액"]
+            colNames = [
+                "지역코드",
+                "법정동",
+                "거래일",
+                "연립다세대",
+                "지번",
+                "전용면적",
+                "건축년도",
+                "층",
+                "보증금액",
+                "월세금액",
+            ]
 
             # Feature Engineering
             try:
@@ -927,7 +1044,18 @@ class Transaction:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["법정동", "지역코드", "주택유형", "년", "월", "일", "대지면적", "연면적", "건축년도", "거래금액"]
+            variables = [
+                "법정동",
+                "지역코드",
+                "주택유형",
+                "년",
+                "월",
+                "일",
+                "대지면적",
+                "연면적",
+                "건축년도",
+                "거래금액",
+            ]
             for t in te:
                 for variable in variables:
                     try:
@@ -935,12 +1063,15 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 주택유형, 년, 월, 일, 대지면적, 연면적, 건축년도, 거래금액]], columns=variables
+                    [[법정동, 지역코드, 주택유형, 년, 월, 일, 대지면적, 연면적, 건축년도, 거래금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "주택유형", "대지면적", "연면적", "건축년도", "거래금액"]
+            colNames = [
+                "지역코드", "법정동", "거래일", "주택유형", "대지면적", "연면적", "건축년도", "거래금액"
+            ]
 
             # Feature Engineering
             try:
@@ -1015,7 +1146,8 @@ class Transaction:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame([[법정동, 지역코드, 년, 월, 일, 계약면적, 보증금액, 월세금액]], columns=variables)
+                data = pd.DataFrame([[법정동, 지역코드, 년, 월, 일, 계약면적, 보증금액, 월세금액]],
+                                    columns=variables)
                 df = pd.concat([df, data])
 
             # Set Columns
@@ -1108,12 +1240,23 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[법정동, 지역코드, 시군구, 용도지역, 지목, 년, 월, 일, 지분거래구분, 거래면적, 거래금액]], columns=variables
+                    [[법정동, 지역코드, 시군구, 용도지역, 지목, 년, 월, 일, 지분거래구분, 거래면적, 거래금액]],
+                    columns=variables,
                 )
                 df = pd.concat([df, data])
 
             # Set Columns
-            colNames = ["지역코드", "법정동", "거래일", "시군구", "용도지역", "지목", "지분거래구분", "거래면적", "거래금액"]
+            colNames = [
+                "지역코드",
+                "법정동",
+                "거래일",
+                "시군구",
+                "용도지역",
+                "지목",
+                "지분거래구분",
+                "거래면적",
+                "거래금액",
+            ]
 
             # Feature Engineering
             try:
@@ -1134,7 +1277,8 @@ class Transaction:
             df.index = range(len(df))
 
             # 숫자형 변환
-            cols = df.columns.drop(["법정동", "거래일", "시군구", "용도지역", "지목", "지분거래구분"])
+            cols = df.columns.drop(
+                ["법정동", "거래일", "시군구", "용도지역", "지목", "지분거래구분"])
             df[cols] = df[cols].apply(pd.to_numeric, errors="coerce")
 
             return df
@@ -1205,7 +1349,23 @@ class Transaction:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[거래금액, 건물면적, 건물주용도, 건축년도, 구분, 년, 월, 일, 대지면적, 법정동, 시군구, 용도지역, 유형, 지역코드, 층]],
+                    [[
+                        거래금액,
+                        건물면적,
+                        건물주용도,
+                        건축년도,
+                        구분,
+                        년,
+                        월,
+                        일,
+                        대지면적,
+                        법정동,
+                        시군구,
+                        용도지역,
+                        유형,
+                        지역코드,
+                        층,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1246,7 +1406,8 @@ class Transaction:
             df.index = range(len(df))
 
             # 숫자형 변환
-            cols = df.columns.drop(["법정동", "거래일", "시군구", "용도지역", "유형", "건물주용도"])
+            cols = df.columns.drop(
+                ["법정동", "거래일", "시군구", "용도지역", "유형", "건물주용도"])
             df[cols] = df[cols].apply(pd.to_numeric, errors="coerce")
 
             return df
@@ -1275,7 +1436,6 @@ class Building:
     """
     건축물대장정보 서비스
     """
-
     def __init__(self, serviceKey):
         """
         공공 데이터 포털에서 발급받은 Service Key를 입력받아 초기화합니다.
@@ -1286,29 +1446,28 @@ class Building:
         # ServiceKey 유효성 검사
         self.baseUrl = "http://apis.data.go.kr/1613000/BldRgstService_v2/"
 
-        self.url_getBrBasisOulnInfo = (
-            self.baseUrl + "getBrBasisOulnInfo" + f"?serviceKey={self.serviceKey}"
-        )
-        self.url_getBrRecapTitleInfo = (
-            self.baseUrl + "getBrRecapTitleInfo" + f"?serviceKey={self.serviceKey}"
-        )
-        self.url_getBrTitleInfo = self.baseUrl + "getBrTitleInfo" + f"?serviceKey={self.serviceKey}"
-        self.url_getBrFlrOulnInfo = (
-            self.baseUrl + "getBrFlrOulnInfo" + f"?serviceKey={self.serviceKey}"
-        )
-        self.url_getBrAtchJibunInfo = (
-            self.baseUrl + "getBrAtchJibunInfo" + f"?serviceKey={self.serviceKey}"
-        )
+        self.url_getBrBasisOulnInfo = (self.baseUrl + "getBrBasisOulnInfo" +
+                                       f"?serviceKey={self.serviceKey}")
+        self.url_getBrRecapTitleInfo = (self.baseUrl + "getBrRecapTitleInfo" +
+                                        f"?serviceKey={self.serviceKey}")
+        self.url_getBrTitleInfo = (self.baseUrl + "getBrTitleInfo" +
+                                   f"?serviceKey={self.serviceKey}")
+        self.url_getBrFlrOulnInfo = (self.baseUrl + "getBrFlrOulnInfo" +
+                                     f"?serviceKey={self.serviceKey}")
+        self.url_getBrAtchJibunInfo = (self.baseUrl + "getBrAtchJibunInfo" +
+                                       f"?serviceKey={self.serviceKey}")
 
-        self.url_getBrExposPubuseAreaInfo = (
-            self.baseUrl + "getBrExposPubuseAreaInfo" + f"?serviceKey={self.serviceKey}"
-        )
-        self.url_getBrWclfInfo = self.baseUrl + "getBrWclfInfo" + f"?serviceKey={self.serviceKey}"
-        self.url_getBrHsprcInfo = self.baseUrl + "getBrHsprcInfo" + f"?serviceKey={self.serviceKey}"
-        self.url_getBrExposInfo = self.baseUrl + "getBrExposInfo" + f"?serviceKey={self.serviceKey}"
-        self.url_getBrJijiguInfo = (
-            self.baseUrl + "getBrJijiguInfo" + f"?serviceKey={self.serviceKey}"
-        )
+        self.url_getBrExposPubuseAreaInfo = (self.baseUrl +
+                                             "getBrExposPubuseAreaInfo" +
+                                             f"?serviceKey={self.serviceKey}")
+        self.url_getBrWclfInfo = (self.baseUrl + "getBrWclfInfo" +
+                                  f"?serviceKey={self.serviceKey}")
+        self.url_getBrHsprcInfo = (self.baseUrl + "getBrHsprcInfo" +
+                                   f"?serviceKey={self.serviceKey}")
+        self.url_getBrExposInfo = (self.baseUrl + "getBrExposInfo" +
+                                   f"?serviceKey={self.serviceKey}")
+        self.url_getBrJijiguInfo = (self.baseUrl + "getBrJijiguInfo" +
+                                    f"?serviceKey={self.serviceKey}")
 
         # Open API URL Dict
         urlDict = {
@@ -1347,7 +1506,9 @@ class Building:
         국토교통부 실거래가 정보 오픈API는 법정동코드 10자리 중 앞 5자리인 구를 나타내는 지역코드를 사용합니다.
         API에 사용할 구 별 코드를 조회하는 메서드이며, 문자열 지역 명을 입력받고, 조회 결과를 Pandas DataFrame형식으로 출력합니다.
         """
-        result = self.code[self.code["법정동명"].str.contains(name)][["법정동명", "법정구코드"]]
+        result = self.code[self.code["법정동명"].str.contains(name)][[
+            "법정동명", "법정구코드"
+        ]]
         result.index = range(len(result))
         return result
 
@@ -1785,7 +1946,14 @@ class Building:
         return df
 
     def getBrBasisOulnInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         01 건축물대장 기본개요 조회
@@ -1844,41 +2012,39 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            bylotCnt,
-                            crtnDay,
-                            guyukCd,
-                            guyukCdNm,
-                            ji,
-                            jiguCd,
-                            jiguCdNm,
-                            jiyukCd,
-                            jiyukCdNm,
-                            lot,
-                            mgmBldrgstPk,
-                            mgmUpBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                        ]
-                    ],
+                    [[
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        bylotCnt,
+                        crtnDay,
+                        guyukCd,
+                        guyukCdNm,
+                        ji,
+                        jiguCd,
+                        jiguCdNm,
+                        jiyukCd,
+                        jiyukCdNm,
+                        lot,
+                        mgmBldrgstPk,
+                        mgmUpBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -1901,7 +2067,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrRecapTitleInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         02 건축물대장 총괄표제부 조회
@@ -1994,75 +2167,73 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            archArea,
-                            atchBldArea,
-                            atchBldCnt,
-                            bcRat,
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            bylotCnt,
-                            crtnDay,
-                            engrEpi,
-                            engrGrade,
-                            engrRat,
-                            etcPurps,
-                            fmlyCnt,
-                            gnBldCert,
-                            gnBldGrade,
-                            hhldCnt,
-                            hoCnt,
-                            indrAutoArea,
-                            indrAutoUtcnt,
-                            indrMechArea,
-                            indrMechUtcnt,
-                            itgBldCert,
-                            itgBldGrade,
-                            ji,
-                            lot,
-                            mainBldCnt,
-                            mainPurpsCd,
-                            mainPurpsCdNm,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newOldRegstrGbCd,
-                            newOldRegstrGbCdNm,
-                            newPlatPlc,
-                            oudrAutoArea,
-                            oudrAutoUtcnt,
-                            oudrMechArea,
-                            oudrMechUtcnt,
-                            platArea,
-                            platGbCd,
-                            platPlc,
-                            pmsDay,
-                            pmsnoGbCd,
-                            pmsnoGbCdNm,
-                            pmsnoKikCd,
-                            pmsnoKikCdNm,
-                            pmsnoYear,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                            stcnsDay,
-                            totArea,
-                            totPkngCnt,
-                            useAprDay,
-                            vlRat,
-                            vlRatEstmTotArea,
-                        ]
-                    ],
+                    [[
+                        archArea,
+                        atchBldArea,
+                        atchBldCnt,
+                        bcRat,
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        bylotCnt,
+                        crtnDay,
+                        engrEpi,
+                        engrGrade,
+                        engrRat,
+                        etcPurps,
+                        fmlyCnt,
+                        gnBldCert,
+                        gnBldGrade,
+                        hhldCnt,
+                        hoCnt,
+                        indrAutoArea,
+                        indrAutoUtcnt,
+                        indrMechArea,
+                        indrMechUtcnt,
+                        itgBldCert,
+                        itgBldGrade,
+                        ji,
+                        lot,
+                        mainBldCnt,
+                        mainPurpsCd,
+                        mainPurpsCdNm,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newOldRegstrGbCd,
+                        newOldRegstrGbCdNm,
+                        newPlatPlc,
+                        oudrAutoArea,
+                        oudrAutoUtcnt,
+                        oudrMechArea,
+                        oudrMechUtcnt,
+                        platArea,
+                        platGbCd,
+                        platPlc,
+                        pmsDay,
+                        pmsnoGbCd,
+                        pmsnoGbCdNm,
+                        pmsnoKikCd,
+                        pmsnoKikCdNm,
+                        pmsnoYear,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                        stcnsDay,
+                        totArea,
+                        totPkngCnt,
+                        useAprDay,
+                        vlRat,
+                        vlRatEstmTotArea,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2085,7 +2256,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrTitleInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         03 건축물대장 표제부 조회: getBrTitleInfo
@@ -2191,88 +2369,86 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            archArea,
-                            atchBldArea,
-                            atchBldCnt,
-                            bcRat,
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            bylotCnt,
-                            crtnDay,
-                            dongNm,
-                            emgenUseElvtCnt,
-                            engrEpi,
-                            engrGrade,
-                            engrRat,
-                            etcPurps,
-                            etcRoof,
-                            etcStrct,
-                            fmlyCnt,
-                            gnBldCert,
-                            gnBldGrade,
-                            grndFlrCnt,
-                            heit,
-                            hhldCnt,
-                            hoCnt,
-                            indrAutoArea,
-                            indrAutoUtcnt,
-                            indrMechArea,
-                            indrMechUtcnt,
-                            itgBldCert,
-                            itgBldGrade,
-                            ji,
-                            lot,
-                            mainAtchGbCd,
-                            mainAtchGbCdNm,
-                            mainPurpsCd,
-                            mainPurpsCdNm,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            oudrAutoArea,
-                            oudrAutoUtcnt,
-                            oudrMechArea,
-                            oudrMechUtcnt,
-                            platArea,
-                            platGbCd,
-                            platPlc,
-                            pmsDay,
-                            pmsnoGbCd,
-                            pmsnoGbCdNm,
-                            pmsnoKikCd,
-                            pmsnoKikCdNm,
-                            pmsnoYear,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rideUseElvtCnt,
-                            rnum,
-                            roofCd,
-                            roofCdNm,
-                            rserthqkAblty,
-                            rserthqkDsgnApplyYn,
-                            sigunguCd,
-                            splotNm,
-                            stcnsDay,
-                            strctCd,
-                            strctCdNm,
-                            totArea,
-                            totDongTotArea,
-                            ugrndFlrCnt,
-                            useAprDay,
-                            vlRat,
-                            vlRatEstmTotArea,
-                        ]
-                    ],
+                    [[
+                        archArea,
+                        atchBldArea,
+                        atchBldCnt,
+                        bcRat,
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        bylotCnt,
+                        crtnDay,
+                        dongNm,
+                        emgenUseElvtCnt,
+                        engrEpi,
+                        engrGrade,
+                        engrRat,
+                        etcPurps,
+                        etcRoof,
+                        etcStrct,
+                        fmlyCnt,
+                        gnBldCert,
+                        gnBldGrade,
+                        grndFlrCnt,
+                        heit,
+                        hhldCnt,
+                        hoCnt,
+                        indrAutoArea,
+                        indrAutoUtcnt,
+                        indrMechArea,
+                        indrMechUtcnt,
+                        itgBldCert,
+                        itgBldGrade,
+                        ji,
+                        lot,
+                        mainAtchGbCd,
+                        mainAtchGbCdNm,
+                        mainPurpsCd,
+                        mainPurpsCdNm,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        oudrAutoArea,
+                        oudrAutoUtcnt,
+                        oudrMechArea,
+                        oudrMechUtcnt,
+                        platArea,
+                        platGbCd,
+                        platPlc,
+                        pmsDay,
+                        pmsnoGbCd,
+                        pmsnoGbCdNm,
+                        pmsnoKikCd,
+                        pmsnoKikCdNm,
+                        pmsnoYear,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rideUseElvtCnt,
+                        rnum,
+                        roofCd,
+                        roofCdNm,
+                        rserthqkAblty,
+                        rserthqkDsgnApplyYn,
+                        sigunguCd,
+                        splotNm,
+                        stcnsDay,
+                        strctCd,
+                        strctCdNm,
+                        totArea,
+                        totDongTotArea,
+                        ugrndFlrCnt,
+                        useAprDay,
+                        vlRat,
+                        vlRatEstmTotArea,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2295,7 +2471,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrFlrOulnInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         04 건축물대장 층별개요 조회
@@ -2357,44 +2540,42 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            area,
-                            areaExctYn,
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            crtnDay,
-                            dongNm,
-                            etcPurps,
-                            etcStrct,
-                            flrGbCd,
-                            flrGbCdNm,
-                            flrNo,
-                            flrNoNm,
-                            ji,
-                            lot,
-                            mainAtchGbCd,
-                            mainAtchGbCdNm,
-                            mainPurpsCd,
-                            mainPurpsCdNm,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                            strctCd,
-                            strctCdNm,
-                        ]
-                    ],
+                    [[
+                        area,
+                        areaExctYn,
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        crtnDay,
+                        dongNm,
+                        etcPurps,
+                        etcStrct,
+                        flrGbCd,
+                        flrGbCdNm,
+                        flrNo,
+                        flrNoNm,
+                        ji,
+                        lot,
+                        mainAtchGbCd,
+                        mainAtchGbCdNm,
+                        mainPurpsCd,
+                        mainPurpsCdNm,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                        strctCd,
+                        strctCdNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2417,7 +2598,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrAtchJibunInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         05 건축물대장 부속지번 조회: getBrAtchJibunInfo
@@ -2479,44 +2667,42 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            atchBjdongCd,
-                            atchBlock,
-                            atchBun,
-                            atchEtcJibunNm,
-                            atchJi,
-                            atchLot,
-                            atchPlatGbCd,
-                            atchRegstrGbCd,
-                            atchRegstrGbCdNm,
-                            atchSigunguCd,
-                            atchSplotNm,
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            crtnDay,
-                            ji,
-                            lot,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                        ]
-                    ],
+                    [[
+                        atchBjdongCd,
+                        atchBlock,
+                        atchBun,
+                        atchEtcJibunNm,
+                        atchJi,
+                        atchLot,
+                        atchPlatGbCd,
+                        atchRegstrGbCd,
+                        atchRegstrGbCdNm,
+                        atchSigunguCd,
+                        atchSplotNm,
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        crtnDay,
+                        ji,
+                        lot,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2616,50 +2802,48 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            area,
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            crtnDay,
-                            dongNm,
-                            etcPurps,
-                            etcStrct,
-                            exposPubuseGbCd,
-                            exposPubuseGbCdNm,
-                            flrGbCd,
-                            flrGbCdNm,
-                            flrNo,
-                            flrNoNm,
-                            hoNm,
-                            ji,
-                            lot,
-                            mainAtchGbCd,
-                            mainAtchGbCdNm,
-                            mainPurpsCd,
-                            mainPurpsCdNm,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                            strctCd,
-                            strctCdNm,
-                        ]
-                    ],
+                    [[
+                        area,
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        crtnDay,
+                        dongNm,
+                        etcPurps,
+                        etcStrct,
+                        exposPubuseGbCd,
+                        exposPubuseGbCdNm,
+                        flrGbCd,
+                        flrGbCdNm,
+                        flrNo,
+                        flrNoNm,
+                        hoNm,
+                        ji,
+                        lot,
+                        mainAtchGbCd,
+                        mainAtchGbCdNm,
+                        mainPurpsCd,
+                        mainPurpsCdNm,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                        strctCd,
+                        strctCdNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2682,7 +2866,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrWclfInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         07 건축물대장 오수정화시설 조회: getBrWclfInfo
@@ -2740,40 +2931,38 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            capaLube,
-                            capaPsper,
-                            crtnDay,
-                            etcMode,
-                            ji,
-                            lot,
-                            mgmBldrgstPk,
-                            modeCd,
-                            modeCdNm,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                            unitGbCd,
-                            unitGbCdNm,
-                        ]
-                    ],
+                    [[
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        capaLube,
+                        capaPsper,
+                        crtnDay,
+                        etcMode,
+                        ji,
+                        lot,
+                        mgmBldrgstPk,
+                        modeCd,
+                        modeCdNm,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                        unitGbCd,
+                        unitGbCdNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2796,7 +2985,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrHsprcInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         08 건축물대장 주택가격 조회: getBrHsprcInfo
@@ -2849,35 +3045,33 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            bylotCnt,
-                            crtnDay,
-                            hsprc,
-                            ji,
-                            lot,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                        ]
-                    ],
+                    [[
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        bylotCnt,
+                        crtnDay,
+                        hsprc,
+                        ji,
+                        lot,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -2900,7 +3094,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrExposInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         09 건축물대장 전유부 조회: getBrExposInfo
@@ -2956,38 +3157,36 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bjdongCd,
-                            bldNm,
-                            block,
-                            bun,
-                            crtnDay,
-                            dongNm,
-                            flrGbCd,
-                            flrGbCdNm,
-                            flrNo,
-                            hoNm,
-                            ji,
-                            lot,
-                            mgmBldrgstPk,
-                            naBjdongCd,
-                            naMainBun,
-                            naRoadCd,
-                            naSubBun,
-                            naUgrndCd,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            regstrGbCd,
-                            regstrGbCdNm,
-                            regstrKindCd,
-                            regstrKindCdNm,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                        ]
-                    ],
+                    [[
+                        bjdongCd,
+                        bldNm,
+                        block,
+                        bun,
+                        crtnDay,
+                        dongNm,
+                        flrGbCd,
+                        flrGbCdNm,
+                        flrNo,
+                        hoNm,
+                        ji,
+                        lot,
+                        mgmBldrgstPk,
+                        naBjdongCd,
+                        naMainBun,
+                        naRoadCd,
+                        naSubBun,
+                        naUgrndCd,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        regstrGbCd,
+                        regstrGbCdNm,
+                        regstrKindCd,
+                        regstrKindCdNm,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -3010,7 +3209,14 @@ class Building:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))
 
     def getBrJijiguInfo(
-        self, sigunguCd_, bjdongCd_, platGbCd_="", bun_="", ji_="", startDate_="", endDate_=""
+        self,
+        sigunguCd_,
+        bjdongCd_,
+        platGbCd_="",
+        bun_="",
+        ji_="",
+        startDate_="",
+        endDate_="",
     ):
         """
         10 건축물대장 지역지구구역 조회: getBrJijiguInfo
@@ -3057,29 +3263,27 @@ class Building:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [
-                        [
-                            bjdongCd,
-                            block,
-                            bun,
-                            crtnDay,
-                            etcJijigu,
-                            ji,
-                            jijiguCd,
-                            jijiguCdNm,
-                            jijiguGbCd,
-                            jijiguGbCdNm,
-                            lot,
-                            mgmBldrgstPk,
-                            newPlatPlc,
-                            platGbCd,
-                            platPlc,
-                            reprYn,
-                            rnum,
-                            sigunguCd,
-                            splotNm,
-                        ]
-                    ],
+                    [[
+                        bjdongCd,
+                        block,
+                        bun,
+                        crtnDay,
+                        etcJijigu,
+                        ji,
+                        jijiguCd,
+                        jijiguCdNm,
+                        jijiguGbCd,
+                        jijiguGbCdNm,
+                        lot,
+                        mgmBldrgstPk,
+                        newPlatPlc,
+                        platGbCd,
+                        platPlc,
+                        reprYn,
+                        rnum,
+                        sigunguCd,
+                        splotNm,
+                    ]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])

@@ -27,8 +27,7 @@
       - 0.1.2 Version (2020-12):
         - 국토교통부 실거래가 정보 조회 기능 전면 수정
 
-- **요구 사항**
-  ![](https://img.shields.io/badge/Python-3.7.4-yellow.svg)
+- **요구 사항** ![](https://img.shields.io/badge/Python-3.7.4-yellow.svg)
   ![](https://img.shields.io/badge/Pandas-0.25.3-red.svg)
 
 **PublicDataReader**는 [공공데이터포털](https://data.go.kr),

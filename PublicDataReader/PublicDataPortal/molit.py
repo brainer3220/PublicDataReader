@@ -2049,7 +2049,6 @@ class Building:
                 df = pd.concat([df, data])
                 df.index = range(len(df))
 
-
             return df
 
         except:
@@ -2271,7 +2270,6 @@ class Building:
         """
         # URL
         url = f"{self.url_getBrTitleInfo}&sigunguCd={sigunguCd_}&bjdongCd={bjdongCd_}&platGbCd={platGbCd_}&bun={bun_}&ji={ji_}&startDate={startDate_}&endDate={endDate_}&numOfRows=99999"
-
 
         try:
             # Get raw data

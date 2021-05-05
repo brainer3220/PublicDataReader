@@ -10,6 +10,7 @@ class AirStation:
     """
     측정소정보 조회 서비스 클래스
     """
+
     def __init__(self, serviceKey):
         """
         서비스키 초기화

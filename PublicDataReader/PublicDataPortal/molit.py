@@ -40,6 +40,7 @@ class Transaction:
     """
     부동산 실거래가 조회 클래스
     """
+
     def __init__(self, serviceKey):
         """
         공공 데이터 포털에서 발급받은 Service Key를 입력받아 초기화합니다.
@@ -1436,6 +1437,7 @@ class Building:
     """
     건축물대장정보 서비스
     """
+
     def __init__(self, serviceKey):
         """
         공공 데이터 포털에서 발급받은 Service Key를 입력받아 초기화합니다.

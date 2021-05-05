@@ -60,7 +60,8 @@ class TransInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[USE_DT, LINE_NUM, SUB_STA_NM, RIDE_PASGR_NUM, ALIGHT_PASGR_NUM, WORK_DT]],
+                    [[USE_DT, LINE_NUM, SUB_STA_NM, RIDE_PASGR_NUM,
+                        ALIGHT_PASGR_NUM, WORK_DT]],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -91,7 +92,8 @@ class TransInfo:
 
             # Open API 서비스 제공처 오류
             else:
-                print(f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
+                print(
+                    f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
         # 전체 자료 건 수
         n_data = xmlsoup.findAll("list_total_count")[0].text
         print(f">>> 전체 자료 건 수: {n_data}")
@@ -280,7 +282,8 @@ class TransInfo:
 
             # Open API 서비스 제공처 오류
             else:
-                print(f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
+                print(
+                    f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
         # 전체 자료 건 수
         n_data = xmlsoup.findAll("list_total_count")[0].text
         print(f">>> 전체 자료 건 수: {n_data}")

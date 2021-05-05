@@ -2000,7 +2000,8 @@ class StoreInfo:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame([[bizresId, result, message]], columns=variables)
+                data = pd.DataFrame(
+                    [[bizresId, result, message]], columns=variables)
                 df = pd.concat([df, data])
 
             # Set col names
@@ -2534,7 +2535,8 @@ class StoreInfo:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame([[indsLclsCd, indsLclsNm, stdrDt]], columns=variables)
+                data = pd.DataFrame(
+                    [[indsLclsCd, indsLclsNm, stdrDt]], columns=variables)
                 df = pd.concat([df, data])
 
             # Set col names
@@ -2578,7 +2580,8 @@ class StoreInfo:
 
             # Creating Pandas Data Frame
             df = pd.DataFrame()
-            variables = ["indsLclsCd", "indsLclsNm", "indsMclsCd", "indsMclsNm", "stdrDt"]
+            variables = ["indsLclsCd", "indsLclsNm",
+                         "indsMclsCd", "indsMclsNm", "stdrDt"]
 
             for t in te:
                 for variable in variables:
@@ -2587,7 +2590,8 @@ class StoreInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[indsLclsCd, indsLclsNm, indsMclsCd, indsMclsNm, stdrDt]], columns=variables
+                    [[indsLclsCd, indsLclsNm, indsMclsCd,
+                        indsMclsNm, stdrDt]], columns=variables
                 )
                 df = pd.concat([df, data])
 

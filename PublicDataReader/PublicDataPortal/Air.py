@@ -50,7 +50,8 @@ class AirStation:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame([[stationName, addr, tm]], columns=variables)
+                data = pd.DataFrame(
+                    [[stationName, addr, tm]], columns=variables)
                 df = pd.concat([df, data])
 
             # Arange Columns
@@ -109,7 +110,8 @@ class AirStation:
                 except:
                     globals()[variable] = np.nan
             data = pd.DataFrame(
-                [[stationName, addr, year, oper, photo, vrml, map, mangName, item, dmX, dmY]],
+                [[stationName, addr, year, oper, photo,
+                    vrml, map, mangName, item, dmX, dmY]],
                 columns=variables,
             )
             df = pd.concat([df, data])
@@ -153,7 +155,8 @@ class AirStation:
                     globals()[variable] = t.find(variable).text
                 except:
                     globals()[variable] = np.nan
-            data = pd.DataFrame([[sidoName, sggName, umdName, tmX, tmY]], columns=variables)
+            data = pd.DataFrame(
+                [[sidoName, sggName, umdName, tmX, tmY]], columns=variables)
             df = pd.concat([df, data])
 
         # Arange Columns
@@ -292,7 +295,8 @@ class AirData:
 
         # Creating Pandas Data Frame
         df = pd.DataFrame()
-        variables = ["dataTime", "so2Avg", "coAvg", "o3Avg", "no2Avg", "pm10Avg"]
+        variables = ["dataTime", "so2Avg",
+                     "coAvg", "o3Avg", "no2Avg", "pm10Avg"]
 
         for t in te:
             for variable in variables:
@@ -393,4 +397,3 @@ class AirData:
         df.index = range(len(df))
 
         return df
-

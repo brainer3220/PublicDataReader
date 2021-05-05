@@ -29,7 +29,7 @@ class TransInfo:
         """
         지하철 승하차 정보 조회
         입력: 시작 인덱스, 끝 인덱스, 조회 일자
-        조건: 1회 1000건 제한        
+        조건: 1회 1000건 제한
         """
 
         url = f"{self.urlBase}{self.serviceKey}/xml/CardSubwayStatsNew/{start_index}/{end_index}/{use_dt}"
@@ -60,8 +60,16 @@ class TransInfo:
                     except:
                         globals()[variable] = np.nan
                 data = pd.DataFrame(
-                    [[USE_DT, LINE_NUM, SUB_STA_NM, RIDE_PASGR_NUM,
-                        ALIGHT_PASGR_NUM, WORK_DT]],
+                    [
+                        [
+                            USE_DT,
+                            LINE_NUM,
+                            SUB_STA_NM,
+                            RIDE_PASGR_NUM,
+                            ALIGHT_PASGR_NUM,
+                            WORK_DT,
+                        ]
+                    ],
                     columns=variables,
                 )
                 df = pd.concat([df, data])
@@ -92,8 +100,7 @@ class TransInfo:
 
             # Open API 서비스 제공처 오류
             else:
-                print(
-                    f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
+                print(f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
             pass
 
         # 전체 자료 건 수
@@ -106,7 +113,7 @@ class TransInfo:
         """
         버스 승하차 정보 조회
         입력: 시작 인덱스, 끝 인덱스, 조회 년월
-        조건: 1회 1000건 제한        
+        조건: 1회 1000건 제한
         """
 
         if bus_no == None:
@@ -284,8 +291,7 @@ class TransInfo:
 
             # Open API 서비스 제공처 오류
             else:
-                print(
-                    f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
+                print(f">>> {te[0].find('CODE').text} {te[0].find('MESSAGE').text}")
             pass
 
         # 전체 자료 건 수

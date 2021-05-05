@@ -1,5 +1,6 @@
-import PublicDataReader as pdr
 from config import OpenAPI
+
+import PublicDataReader as pdr
 
 if __name__ == "__main__":
 

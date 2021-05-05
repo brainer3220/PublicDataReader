@@ -1,7 +1,9 @@
 # 국토교통부(molit) Open API 통합
-from PublicDataReader.PublicDataPortal.Air import (AirData, AirDataRT,
-                                                   AirStation)
-from PublicDataReader.PublicDataPortal.molit import Building, Transaction
+from PublicDataReader.PublicDataPortal.Air import AirData
+from PublicDataReader.PublicDataPortal.Air import AirDataRT
+from PublicDataReader.PublicDataPortal.Air import AirStation
+from PublicDataReader.PublicDataPortal.molit import Building
+from PublicDataReader.PublicDataPortal.molit import Transaction
 from PublicDataReader.PublicDataPortal.semas import StoreInfo
 from PublicDataReader.Seoul.transportation import TransInfo
 

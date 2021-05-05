@@ -1409,7 +1409,6 @@ class Transaction:
             cols = df.columns.drop(
                 ["법정동", "거래일", "시군구", "용도지역", "유형", "건물주용도"])
             df[cols] = df[cols].apply(pd.to_numeric, errors="coerce")
-
             return df
 
         except:
@@ -2050,6 +2049,7 @@ class Building:
                 df = pd.concat([df, data])
                 df.index = range(len(df))
 
+
             return df
 
         except:
@@ -2271,6 +2271,7 @@ class Building:
         """
         # URL
         url = f"{self.url_getBrTitleInfo}&sigunguCd={sigunguCd_}&bjdongCd={bjdongCd_}&platGbCd={platGbCd_}&bun={bun_}&ji={ji_}&startDate={startDate_}&endDate={endDate_}&numOfRows=99999"
+
 
         try:
             # Get raw data
@@ -3301,6 +3302,7 @@ class Building:
             # 정상 요청시 에러 발생 -> Python 코드 에러
             if te[0].find("resultCode").text == "00":
                 print(">>> Python Logic Error. e-mail : wooil@kakao.com")
+
             # Open API 서비스 제공처 오류
             else:
                 print(">>> Open API Error: {}".format(te[0].find["resultMsg"]))

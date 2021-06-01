@@ -13,6 +13,9 @@
   - [Colab - 국토교통부 실거래가 정보 조회](https://colab.research.google.com/drive/1pFtMFr_te9T_maHjee8Sd8Yq9rTrE-4F)
   - [Colab - 소상공인진흥공단 상가업소 정보 조회](https://colab.research.google.com/drive/14AAR6dRiTubZ8rnc883GitaB5q9pnIox?usp=sharing)
 
+- **[카카오톡 오픈채팅방 링크](https://open.kakao.com/o/gFYXtP2c)**
+  - PublicDataReader 사용 관련 Q&A를 위한 오픈채팅방입니다.
+
 ## 소개
 
 - **최신 버전**
@@ -26,8 +29,9 @@
         - 서울시 버스노선별 정류장별 시간대별 승하차 인원 정보 조회 기능 추가
       - 0.1.2 Version (2020-12):
         - 국토교통부 실거래가 정보 조회 기능 전면 수정
-
-- **요구 사항** ![](https://img.shields.io/badge/Python-3.7.4-yellow.svg)
+        
+- **요구 사항**
+  ![](https://img.shields.io/badge/Python-3.7.4-yellow.svg)
   ![](https://img.shields.io/badge/Pandas-0.25.3-red.svg)
 
 **PublicDataReader**는 [공공데이터포털](https://data.go.kr),
@@ -177,7 +181,156 @@ df_BizTradeSum = molit.DataCollector(molit.BizTrade, 41135, 202001, 202012)
 
 ```
 
-### (예시2) 소상공인 상가업소 정보 조회 서비스
+### (예시2) 국토교통부 건축물대장정보 서비스
+
+```python
+# 1. 라이브러리 임포트 및 버전 확인하기
+import PublicDataReader as pdr
+print(pdr.__version__)
+
+# 2. 공공 데이터 포털 Open API 서비스 인증키 입력하기
+serviceKey = "공공 데이터 포털에서 발급받은 서비스 키"
+
+# 3. 국토교통부(molit) 건축물대장정보 서비스 Open API 인스턴스 생성하기
+molit = pdr.Transaction(serviceKey)
+
+# 4. 건축물대장정보 오퍼레이션별 데이터 조회
+
+# Sample Parameter - (판교 현대백화점)
+# 시군구코드(5)
+sigunguCd = "41135"
+# 읍면동코드(5)
+bjdongCd = "11000"
+# 본번
+bun = "541".zfill(4)
+# 부번
+ji = "".zfill(4)
+
+# (Operaion 01) 기본개요
+df1 = molit.getBrBasisOulnInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df1 = molit.ChangeCols(df1, "getBrBasisOulnInfo")
+
+# (Operaion 02) 총괄표제부
+df2 = molit.getBrRecapTitleInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df2 = molit.ChangeCols(df2, "getBrRecapTitleInfo")
+
+# (Operaion 03) 표제부
+df3 = molit.getBrTitleInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df3 = molit.ChangeCols(df3, "getBrTitleInfo")
+
+# (Operaion 04) 층별개요
+df4 = molit.getBrFlrOulnInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df4 = molit.ChangeCols(df4, "getBrFlrOulnInfo")
+
+# (Operaion 05) 부속지번
+df5 = molit.getBrAtchJibunInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df5 = molit.ChangeCols(df5, "getBrAtchJibunInfo")
+
+# (Operaion 06) 전유공용면적
+df6 = molit.getBrExposPubuseAreaInfo(
+    sigunguCd_ = sigunguCd,
+    bjdongCd_ = bjdongCd,
+    platGbCd_ = "0",
+    bun_ = bun,
+    ji_ = ji,
+    startDate_ = "",
+    endDate_ = "",
+    dongNm_ = "",
+    hoNm_ = ""
+)
+df6 = molit.ChangeCols(df6, "getBrExposPubuseAreaInfo")
+
+# (Operaion 07) 오수정화시설
+df7 = molit.getBrWclfInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df7 = molit.ChangeCols(df7, "getBrWclfInfo")
+
+# (Operaion 08) 주택가격
+df8 = molit.getBrHsprcInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df8 = molit.ChangeCols(df8, "getBrHsprcInfo")
+
+# (Operaion 09) 전유부
+df9 = molit.getBrExposInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df9 = molit.ChangeCols(df9, "getBrExposInfo")
+
+# (Operaion 10) 지역지구구역
+df10 = molit.getBrJijiguInfo(
+    sigunguCd_=sigunguCd,
+    bjdongCd_=bjdongCd,
+    platGbCd_="0",
+    bun_=bun,
+    ji_=ji,
+    startDate_="",
+    endDate_=""
+)
+df10 = molit.ChangeCols(df10, "getBrJijiguInfo")
+```
+
+### (예시3) 소상공인 상가업소 정보 조회 서비스
+
 
 ```python
 # 1. 라이브러리 임포트 및 버전 확인하기

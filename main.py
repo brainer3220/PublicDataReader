@@ -1,5 +1,6 @@
-import PublicDataReader as pdr
 from config import OpenAPI
+
+import PublicDataReader as pdr
 
 if __name__ == "__main__":
 
@@ -84,7 +85,10 @@ if __name__ == "__main__":
     indsLclsCd = "Q"
     pageNo = 1
 
-    df = semas.storeListInDong(divId=divId, key=key, indsLclsCd_=indsLclsCd, pageNo=pageNo)
+    df = semas.storeListInDong(divId=divId,
+                               key=key,
+                               indsLclsCd_=indsLclsCd,
+                               pageNo=pageNo)
     print(df.head())
 
     # 09 상권내 상가업소 조회
@@ -108,7 +112,11 @@ if __name__ == "__main__":
     indsLclsCd = "Q"
     pageNo = "1"
 
-    df = semas.storeListInRadius(radius=radius, cx=cx, cy=cy, indsLclsCd_=indsLclsCd, pageNo=pageNo)
+    df = semas.storeListInRadius(radius=radius,
+                                 cx=cx,
+                                 cy=cy,
+                                 indsLclsCd_=indsLclsCd,
+                                 pageNo=pageNo)
     print(df.head())
 
     # 11. 사각형내 상가업소 조회
@@ -122,9 +130,12 @@ if __name__ == "__main__":
     indsLclsCd = "Q"
     pageNo = 1
 
-    df = semas.storeListInRectangle(
-        minx=minx, miny=miny, maxx=maxx, maxy=maxy, indsLclsCd_=indsLclsCd, pageNo=1
-    )
+    df = semas.storeListInRectangle(minx=minx,
+                                    miny=miny,
+                                    maxx=maxx,
+                                    maxy=maxy,
+                                    indsLclsCd_=indsLclsCd,
+                                    pageNo=1)
     print(df.head())
 
     # 12. 다각형내 상가업소 조회

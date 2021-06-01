@@ -12,6 +12,7 @@
 - **코랩 실습 코드**:
   - [Colab - 국토교통부 실거래가 정보 조회](https://colab.research.google.com/drive/1pFtMFr_te9T_maHjee8Sd8Yq9rTrE-4F)
   - [Colab - 소상공인진흥공단 상가업소 정보 조회](https://colab.research.google.com/drive/14AAR6dRiTubZ8rnc883GitaB5q9pnIox?usp=sharing)
+
 - **[카카오톡 오픈채팅방 링크](https://open.kakao.com/o/gFYXtP2c)**
   - PublicDataReader 사용 관련 Q&A를 위한 오픈채팅방입니다.
 
@@ -28,7 +29,7 @@
         - 서울시 버스노선별 정류장별 시간대별 승하차 인원 정보 조회 기능 추가
       - 0.1.2 Version (2020-12):
         - 국토교통부 실거래가 정보 조회 기능 전면 수정
-
+        
 - **요구 사항**
   ![](https://img.shields.io/badge/Python-3.7.4-yellow.svg)
   ![](https://img.shields.io/badge/Pandas-0.25.3-red.svg)
@@ -329,6 +330,7 @@ df10 = molit.ChangeCols(df10, "getBrJijiguInfo")
 ```
 
 ### (예시3) 소상공인 상가업소 정보 조회 서비스
+
 
 ```python
 # 1. 라이브러리 임포트 및 버전 확인하기

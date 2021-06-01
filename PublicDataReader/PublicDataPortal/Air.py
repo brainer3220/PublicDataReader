@@ -1,15 +1,17 @@
-import pandas as pd
-import numpy as np
 import datetime
+
+import numpy as np
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+
+from PublicDataReader.PublicDataPortal.__init__ import *
 
 
 class AirStation:
     """
     측정소정보 조회 서비스 클래스
     """
-
     def __init__(self, serviceKey):
         """
         서비스키 초기화
@@ -24,8 +26,7 @@ class AirStation:
         # URL
         url_1 = (
             "http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?tmX="
-            + tmX
-        )
+            + tmX)
         url_2 = url_1 + "&tmY=" + tmY
         url_3 = url_2 + "&ver=" + ver
         url = url_3 + "&ServiceKey=" + self.serviceKey
@@ -50,7 +51,8 @@ class AirStation:
                         globals()[variable] = t.find(variable).text
                     except:
                         globals()[variable] = np.nan
-                data = pd.DataFrame([[stationName, addr, tm]], columns=variables)
+                data = pd.DataFrame([[stationName, addr, tm]],
+                                    columns=variables)
                 df = pd.concat([df, data])
 
             # Arange Columns
@@ -61,7 +63,6 @@ class AirStation:
         except:
             error_msg = "serviceKey Error"
             print(error_msg)
-            pass
 
     def GetList(self, addr, stationName, pageNo, numOfRows):
         """
@@ -71,8 +72,7 @@ class AirStation:
         # URL
         url_1 = (
             "http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getMsrstnList?addr="
-            + addr
-        )
+            + addr)
         url_2 = url_1 + "&stationName=" + stationName
         url_3 = url_2 + "&pageNo=" + pageNo
         url_4 = url_3 + "&numOfRows=" + numOfRows
@@ -110,7 +110,19 @@ class AirStation:
                 except:
                     globals()[variable] = np.nan
             data = pd.DataFrame(
-                [[stationName, addr, year, oper, photo, vrml, map, mangName, item, dmX, dmY]],
+                [[
+                    stationName,
+                    addr,
+                    year,
+                    oper,
+                    photo,
+                    vrml,
+                    map,
+                    mangName,
+                    item,
+                    dmX,
+                    dmY,
+                ]],
                 columns=variables,
             )
             df = pd.concat([df, data])
@@ -129,8 +141,7 @@ class AirStation:
         # URL
         url_1 = (
             "http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getTMStdrCrdnt?umdName="
-            + umdName
-        )
+            + umdName)
         url_2 = url_1 + "&pageNo=" + pageNo
         url_3 = url_2 + "&numOfRows=" + numOfRows
         url = url_3 + "&ServiceKey=" + self.serviceKey
@@ -154,7 +165,8 @@ class AirStation:
                     globals()[variable] = t.find(variable).text
                 except:
                     globals()[variable] = np.nan
-            data = pd.DataFrame([[sidoName, sggName, umdName, tmX, tmY]], columns=variables)
+            data = pd.DataFrame([[sidoName, sggName, umdName, tmX, tmY]],
+                                columns=variables)
             df = pd.concat([df, data])
 
         # Arange Columns
@@ -175,8 +187,7 @@ class AirDataRT:
         # URL
         url_1 = (
             "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?stationName="
-            + stationName
-        )
+            + stationName)
         url_2 = url_1 + "&dataTerm=" + dataTerm
         url_3 = url_2 + "&pageNo=" + pageNo
         url_4 = url_3 + "&numOfRows=" + numOfRows
@@ -224,30 +235,28 @@ class AirDataRT:
                 except:
                     globals()[variable] = np.nan
             data = pd.DataFrame(
-                [
-                    [
-                        dataTime,
-                        mangName,
-                        so2Value,
-                        coValue,
-                        o3Value,
-                        no2Value,
-                        pm10Value,
-                        pm10Value24,
-                        pm25Value,
-                        pm25Value24,
-                        khaiValue,
-                        khaiGrade,
-                        so2Grade,
-                        coGrade,
-                        o3Grade,
-                        no2Grade,
-                        pm10Grade,
-                        pm25Grade,
-                        pm10Grade1h,
-                        pm25Grade1h,
-                    ]
-                ],
+                [[
+                    dataTime,
+                    mangName,
+                    so2Value,
+                    coValue,
+                    o3Value,
+                    no2Value,
+                    pm10Value,
+                    pm10Value24,
+                    pm25Value,
+                    pm25Value24,
+                    khaiValue,
+                    khaiGrade,
+                    so2Grade,
+                    coGrade,
+                    o3Grade,
+                    no2Grade,
+                    pm10Grade,
+                    pm25Grade,
+                    pm10Grade1h,
+                    pm25Grade1h,
+                ]],
                 columns=variables,
             )
             df = pd.concat([df, data])
@@ -275,8 +284,7 @@ class AirData:
         # URL
         url_1 = (
             "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnStatsSvc/getMsrstnAcctoLastDcsnDnsty?stationName="
-            + stationName
-        )
+            + stationName)
         url_2 = url_1 + "&searchCondition=" + searchCondition
         url_3 = url_2 + "&pageNo=" + pageNo
         url_4 = url_3 + "&numOfRows=" + numOfRows
@@ -293,7 +301,9 @@ class AirData:
 
         # Creating Pandas Data Frame
         df = pd.DataFrame()
-        variables = ["dataTime", "so2Avg", "coAvg", "o3Avg", "no2Avg", "pm10Avg"]
+        variables = [
+            "dataTime", "so2Avg", "coAvg", "o3Avg", "no2Avg", "pm10Avg"
+        ]
 
         for t in te:
             for variable in variables:
@@ -302,8 +312,8 @@ class AirData:
                 except:
                     globals()[variable] = np.nan
             data = pd.DataFrame(
-                [[dataTime, so2Avg, coAvg, o3Avg, no2Avg, pm10Avg]], columns=variables
-            )
+                [[dataTime, so2Avg, coAvg, o3Avg, no2Avg, pm10Avg]],
+                columns=variables)
             df = pd.concat([df, data])
 
         # Arange Columns
@@ -311,7 +321,8 @@ class AirData:
 
         return df
 
-    def PeriodDataReader(self, searchDataTime, statArticleCondition, pageNo, numOfRows):
+    def PeriodDataReader(self, searchDataTime, statArticleCondition, pageNo,
+                         numOfRows):
         """
         02 오퍼레이션
         기간별 오염통계 정보 조회(getDatePollutnStatInfo)
@@ -320,8 +331,7 @@ class AirData:
         # URL
         url_1 = (
             "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnStatsSvc/getDatePollutnStatInfo?searchDataTime="
-            + searchDataTime
-        )
+            + searchDataTime)
         url_2 = url_1 + "&statArticleCondition=" + statArticleCondition
         url_3 = url_2 + "&pageNo=" + pageNo
         url_4 = url_3 + "&numOfRows=" + numOfRows
@@ -365,27 +375,25 @@ class AirData:
                 except:
                     globals()[variable] = np.nan
             data = pd.DataFrame(
-                [
-                    [
-                        sidoName,
-                        dataTime,
-                        so2Avg,
-                        coAvg,
-                        o3Avg,
-                        no2Avg,
-                        pm10Avg,
-                        so2Max,
-                        coMax,
-                        o3Max,
-                        no2Max,
-                        pm10Max,
-                        so2Min,
-                        coMin,
-                        o3Min,
-                        no2Min,
-                        pm10Min,
-                    ]
-                ],
+                [[
+                    sidoName,
+                    dataTime,
+                    so2Avg,
+                    coAvg,
+                    o3Avg,
+                    no2Avg,
+                    pm10Avg,
+                    so2Max,
+                    coMax,
+                    o3Max,
+                    no2Max,
+                    pm10Max,
+                    so2Min,
+                    coMin,
+                    o3Min,
+                    no2Min,
+                    pm10Min,
+                ]],
                 columns=variables,
             )
             df = pd.concat([df, data])
@@ -394,4 +402,3 @@ class AirData:
         df.index = range(len(df))
 
         return df
-

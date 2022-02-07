@@ -43,11 +43,11 @@ class Transportation:
         self.serviceKey = serviceKey
 
         # ServiceKey 등록
-        self.endpoint = f"http://openapi.seoul.go.kr:8088/"
+        self.endpoint = 'http://openapi.seoul.go.kr:8088/'
 
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
-            
+
             "지하철승하차": {
                 "url": f"{self.endpoint}{self.serviceKey}/xml/CardSubwayStatsNew/",
                 "columns": ["USE_DT","LINE_NUM","SUB_STA_NM","RIDE_PASGR_NUM","ALIGHT_PASGR_NUM","WORK_DT"]
@@ -57,7 +57,7 @@ class Transportation:
                 "url": f"{self.endpoint}{self.serviceKey}/xml/CardBusStatisticsServiceNew/",
                 "columns": ['USE_DT','BUS_ROUTE_ID','BUS_ROUTE_NO','BUS_ROUTE_NM','STND_BSST_ID','BSST_ARS_NO','BUS_STA_NM','RIDE_PASGR_NUM','ALIGHT_PASGR_NUM','WORK_DT']
             },
-            
+
         }
 
 
@@ -72,9 +72,7 @@ class Transportation:
             return
 
         try:
-            params = ""
-            for key, value in kwargs.items():
-                params += f"/{value}"
+            params = "".join(f"/{value}" for key, value in kwargs.items())
         except:
             self.logger.error(f"{category} 파라미터 파싱 오류")
             return
@@ -94,14 +92,14 @@ class Transportation:
                 result_code = header.find("CODE").text
                 result_msg = header.find("MESSAGE").text
                 rows = xmlsoup.findAll("row")
-                items = items + rows
+                items += rows
 
                 check_code = result_code
                 startIdx += 1000
                 endIdx += 1000
 
         except:
-            self.logger.error(f"OpenAPI 호출 오류")
+            self.logger.error('OpenAPI 호출 오류')
             return
 
         # 데이터프레임 생성
@@ -124,13 +122,13 @@ class Transportation:
                 df.index = range(len(df))
 
             else:
-                self.logger.info(f"조회 결과 없음")
+                self.logger.info('조회 결과 없음')
                 df = pd.DataFrame(columns=columns)
                 df = self.ChangeCols(df)
                 return df
 
         except:
-            self.logger.error(f"조회 로직 오류")
+            self.logger.error('조회 로직 오류')
             return
 
         return df

@@ -21,5 +21,4 @@ from PublicDataReader.Seoul.transportation import Transportation
 
 code_list_path = "https://raw.githubusercontent.com/WooilJeong/PublicDataReader/develop/PublicDataReader/data/bdong_code.csv"
 def code_list():
-    df = pd.read_csv(code_list_path, encoding="cp949")
-    return df
+    return pd.read_csv(code_list_path, encoding="cp949")

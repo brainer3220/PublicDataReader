@@ -63,12 +63,12 @@ class StoreInfo:
 
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
-            
+
             "지정상권": {
                 "url": f"{self.endpoint}storeZoneOne?serviceKey={self.serviceKey}",
                 "columns": ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt'],
             },
-            
+
             "반경상권": {
                 "url": f"{self.endpoint}storeZoneInRadius?serviceKey={self.serviceKey}",
                 "columns": ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt'],
@@ -148,9 +148,8 @@ class StoreInfo:
                 "url": f"{self.endpoint}smallUpjongList?serviceKey={self.serviceKey}",
                 "columns": ['indsLclsCd', 'indsLclsNm', 'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'stdrDt'],
             },
-            
-        }
 
+        }
 
     def read_data(self, category, **kwargs):
         """
@@ -175,7 +174,7 @@ class StoreInfo:
 
         try:
             # URL
-            url=f"""{endpoint}{params}&numOfRows=99999"""
+            url = f"""{endpoint}{params}&numOfRows=99999"""
 
             # OpenAPI 호출
             result = requests.get(url, verify=False)
@@ -235,7 +234,7 @@ class StoreInfo:
         """
         영문 컬럼명을 국문 컬럼명으로 변경
         """
-        
+
         self.colDict = {
             'adongCd': '행정동코드',
             'adongNm': '행정동명',
@@ -283,6 +282,6 @@ class StoreInfo:
             'trarArea': '면적',
             'trarNo': '상권번호'
         }
-        
+
         df = df.rename(columns=self.colDict)
         return df

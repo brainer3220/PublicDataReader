@@ -47,19 +47,18 @@ class Transportation:
 
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
-            
+
             "지하철승하차": {
                 "url": f"{self.endpoint}{self.serviceKey}/xml/CardSubwayStatsNew/",
-                "columns": ["USE_DT","LINE_NUM","SUB_STA_NM","RIDE_PASGR_NUM","ALIGHT_PASGR_NUM","WORK_DT"]
+                "columns": ["USE_DT", "LINE_NUM", "SUB_STA_NM", "RIDE_PASGR_NUM", "ALIGHT_PASGR_NUM", "WORK_DT"]
             },
 
             "버스승하차": {
                 "url": f"{self.endpoint}{self.serviceKey}/xml/CardBusStatisticsServiceNew/",
-                "columns": ['USE_DT','BUS_ROUTE_ID','BUS_ROUTE_NO','BUS_ROUTE_NM','STND_BSST_ID','BSST_ARS_NO','BUS_STA_NM','RIDE_PASGR_NUM','ALIGHT_PASGR_NUM','WORK_DT']
+                "columns": ['USE_DT', 'BUS_ROUTE_ID', 'BUS_ROUTE_NO', 'BUS_ROUTE_NM', 'STND_BSST_ID', 'BSST_ARS_NO', 'BUS_STA_NM', 'RIDE_PASGR_NUM', 'ALIGHT_PASGR_NUM', 'WORK_DT']
             },
-            
-        }
 
+        }
 
     def read_data(self, category, **kwargs):
 
@@ -135,8 +134,6 @@ class Transportation:
 
         return df
 
-
-
     def ChangeCols(self, df):
         """
         영문 컬럼명을 국문 컬럼명으로 변경
@@ -159,6 +156,6 @@ class Transportation:
             'ALIGHT_PASGR_NUM': '하차총승객수',
             'WORK_DT': '등록일자'
         }
-        
+
         df = df.rename(columns=self.colDict)
         return df

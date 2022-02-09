@@ -27,7 +27,9 @@ molit(Ministry of Land, Infrastructure and Transport)
     09.건축물대장 전유부 조회
     10.건축물대장 지역지구구역 조회
 """
+import datetime
 
+import numpy as np
 import pandas as pd
 import datetime
 import logging

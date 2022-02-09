@@ -3,12 +3,13 @@ import os
 
 import pandas as pd
 
-# 국토교통부(molit) Open API 통합
-from PublicDataReader.PublicDataPortal.molit import Building, Transaction
-# 소상공인 진흥공단(semas) Open API 통합
+from PublicDataReader.PublicDataPortal.molit import Building
+from PublicDataReader.PublicDataPortal.molit import Transaction
 from PublicDataReader.PublicDataPortal.semas import StoreInfo
-# 서울시 지하철호선별 역별 승하차 인원 정보 Open API
 from PublicDataReader.Seoul.transportation import Transportation
+# 국토교통부(molit) Open API 통합
+# 소상공인 진흥공단(semas) Open API 통합
+# 서울시 지하철호선별 역별 승하차 인원 정보 Open API
 
 # 코드 테이블
 # def code_list():

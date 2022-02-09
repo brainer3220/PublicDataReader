@@ -21,7 +21,6 @@ semas(Small Enterprise And Market Service)
     16.상권정보 업종 중분류 조회
     17.상권정보 업종 소분류 조회
 """
-
 import datetime
 import logging
 

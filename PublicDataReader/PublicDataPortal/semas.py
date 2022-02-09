@@ -64,7 +64,8 @@ class StoreInfo:
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
             "지정상권": {
-                "url": f"{self.endpoint}storeZoneOne?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeZoneOne?serviceKey={self.serviceKey}",
                 "columns": [
                     "trarNo",
                     "mainTrarNm",
@@ -79,7 +80,8 @@ class StoreInfo:
                 ],
             },
             "반경상권": {
-                "url": f"{self.endpoint}storeZoneInRadius?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeZoneInRadius?serviceKey={self.serviceKey}",
                 "columns": [
                     "trarNo",
                     "mainTrarNm",
@@ -94,7 +96,8 @@ class StoreInfo:
                 ],
             },
             "사각형상권": {
-                "url": f"{self.endpoint}storeZoneInRectangle?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeZoneInRectangle?serviceKey={self.serviceKey}",
                 "columns": [
                     "trarNo",
                     "mainTrarNm",
@@ -109,7 +112,8 @@ class StoreInfo:
                 ],
             },
             "행정구역상권": {
-                "url": f"{self.endpoint}storeZoneInAdmi?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeZoneInAdmi?serviceKey={self.serviceKey}",
                 "columns": [
                     "trarNo",
                     "mainTrarNm",
@@ -124,7 +128,8 @@ class StoreInfo:
                 ],
             },
             "단일상가": {
-                "url": f"{self.endpoint}storeOne?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeOne?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -168,7 +173,8 @@ class StoreInfo:
                 ],
             },
             "건물상가": {
-                "url": f"{self.endpoint}storeListInBuilding?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInBuilding?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -212,7 +218,8 @@ class StoreInfo:
                 ],
             },
             "지번상가": {
-                "url": f"{self.endpoint}storeListInPnu?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInPnu?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -256,7 +263,8 @@ class StoreInfo:
                 ],
             },
             "행정동상가": {
-                "url": f"{self.endpoint}storeListInDong?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInDong?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -300,7 +308,8 @@ class StoreInfo:
                 ],
             },
             "상권상가": {
-                "url": f"{self.endpoint}storeListInArea?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInArea?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -344,7 +353,8 @@ class StoreInfo:
                 ],
             },
             "반경상가": {
-                "url": f"{self.endpoint}storeListInRadius?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInRadius?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -388,7 +398,8 @@ class StoreInfo:
                 ],
             },
             "사각형상가": {
-                "url": f"{self.endpoint}storeListInRectangle?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInRectangle?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -432,7 +443,8 @@ class StoreInfo:
                 ],
             },
             "다각형상가": {
-                "url": f"{self.endpoint}storeListInPolygon?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInPolygon?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -476,7 +488,8 @@ class StoreInfo:
                 ],
             },
             "업종별상가": {
-                "url": f"{self.endpoint}storeListInUpjong?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListInUpjong?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -520,7 +533,8 @@ class StoreInfo:
                 ],
             },
             "수정일자상가": {
-                "url": f"{self.endpoint}storeListByDate?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}storeListByDate?serviceKey={self.serviceKey}",
                 "columns": [
                     "bizesId",
                     "bizesNm",
@@ -564,11 +578,13 @@ class StoreInfo:
                 ],
             },
             "업종대분류": {
-                "url": f"{self.endpoint}largeUpjongList?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}largeUpjongList?serviceKey={self.serviceKey}",
                 "columns": ["indsLclsCd", "indsLclsNm", "stdrDt"],
             },
             "업종중분류": {
-                "url": f"{self.endpoint}middleUpjongList?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}middleUpjongList?serviceKey={self.serviceKey}",
                 "columns": [
                     "indsLclsCd",
                     "indsLclsNm",
@@ -578,7 +594,8 @@ class StoreInfo:
                 ],
             },
             "업종소분류": {
-                "url": f"{self.endpoint}smallUpjongList?serviceKey={self.serviceKey}",
+                "url":
+                f"{self.endpoint}smallUpjongList?serviceKey={self.serviceKey}",
                 "columns": [
                     "indsLclsCd",
                     "indsLclsNm",

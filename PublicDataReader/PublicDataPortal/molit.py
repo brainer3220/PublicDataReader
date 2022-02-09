@@ -68,7 +68,8 @@ class Transaction:
         self.metaDict = {
             "아파트": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "도로명",
@@ -101,7 +102,8 @@ class Transaction:
                     ],
                 },
                 "전월세": {
-                    "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "법정동",
@@ -120,7 +122,8 @@ class Transaction:
             },
             "오피스텔": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "시군구",
@@ -141,7 +144,8 @@ class Transaction:
                     ],
                 },
                 "전월세": {
-                    "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiRent?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiRent?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "시군구",
@@ -161,7 +165,8 @@ class Transaction:
             },
             "단독다가구": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHTrade?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHTrade?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "법정동",
@@ -180,7 +185,8 @@ class Transaction:
                     ],
                 },
                 "전월세": {
-                    "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHRent?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHRent?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "법정동",
@@ -196,7 +202,8 @@ class Transaction:
             },
             "연립다세대": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "법정동",
@@ -217,7 +224,8 @@ class Transaction:
                     ],
                 },
                 "전월세": {
-                    "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "법정동",
@@ -236,7 +244,8 @@ class Transaction:
             },
             "상업업무용": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "시군구",
@@ -260,7 +269,8 @@ class Transaction:
             },
             "토지": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcLandTrade?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcLandTrade?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "시군구",
@@ -281,7 +291,8 @@ class Transaction:
             },
             "분양입주권": {
                 "매매": {
-                    "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?serviceKey={self.serviceKey}",
+                    "url":
+                    f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?serviceKey={self.serviceKey}",
                     "columns": [
                         "지역코드",
                         "시군구",
@@ -323,7 +334,8 @@ class Transaction:
                         f"{prod} {trans} 조회 서비스 오류 - ({result_code}) {result_msg}"
                     )
 
-    def collect_data(self, prod, trans, sigunguCode, startYearMonth, endYearMonth):
+    def collect_data(self, prod, trans, sigunguCode, startYearMonth,
+                     endYearMonth):
         """
         prod: 상품유형 (ex.아파트, 오피스텔, 단독다가구, 연립다세대, 토지, 상업업무용)
         trans: 매매, 전월세
@@ -451,7 +463,8 @@ class Building:
         # 메타정보 매핑
         self.metaDict = {
             "기본개요": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrBasisOulnInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrBasisOulnInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -496,7 +509,8 @@ class Building:
                 ],
             },
             "총괄표제부": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrRecapTitleInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrRecapTitleInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -575,7 +589,8 @@ class Building:
                 ],
             },
             "표제부": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrTitleInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrTitleInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -667,7 +682,8 @@ class Building:
                 ],
             },
             "층별개요": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrFlrOulnInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrFlrOulnInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -715,7 +731,8 @@ class Building:
                 ],
             },
             "부속지번": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrAtchJibunInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrAtchJibunInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -763,7 +780,8 @@ class Building:
                 ],
             },
             "전유공용면적": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrExposPubuseAreaInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrExposPubuseAreaInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -819,7 +837,8 @@ class Building:
                 ],
             },
             "오수정화시설": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrWclfInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrWclfInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -863,7 +882,8 @@ class Building:
                 ],
             },
             "주택가격": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrHsprcInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrHsprcInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -902,7 +922,8 @@ class Building:
                 ],
             },
             "전유부": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrExposInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrExposInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -944,7 +965,8 @@ class Building:
                 ],
             },
             "지역지구구역": {
-                "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrJijiguInfo?serviceKey={self.serviceKey}",
+                "url":
+                f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrJijiguInfo?serviceKey={self.serviceKey}",
                 "parameters": [
                     "sigunguCd",
                     "bjdongCd",
@@ -987,9 +1009,11 @@ class Building:
             result_code = header.find("resultCode").text
             result_msg = header.find("resultMsg").text
             if result_code == "00":
-                self.logger.info(f"{category} 조회 서비스 정상 - ({result_code}) {result_msg}")
+                self.logger.info(
+                    f"{category} 조회 서비스 정상 - ({result_code}) {result_msg}")
             else:
-                self.logger.err(f"{category} 조회 서비스 오류 - ({result_code}) {result_msg}")
+                self.logger.err(
+                    f"{category} 조회 서비스 오류 - ({result_code}) {result_msg}")
 
     def read_data(self, category, **kwargs):
 

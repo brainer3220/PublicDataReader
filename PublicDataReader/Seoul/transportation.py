@@ -48,7 +48,8 @@ class Transportation:
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
             "지하철승하차": {
-                "url": f"{self.endpoint}{self.serviceKey}/xml/CardSubwayStatsNew/",
+                "url":
+                f"{self.endpoint}{self.serviceKey}/xml/CardSubwayStatsNew/",
                 "columns": [
                     "USE_DT",
                     "LINE_NUM",
@@ -59,7 +60,8 @@ class Transportation:
                 ],
             },
             "버스승하차": {
-                "url": f"{self.endpoint}{self.serviceKey}/xml/CardBusStatisticsServiceNew/",
+                "url":
+                f"{self.endpoint}{self.serviceKey}/xml/CardBusStatisticsServiceNew/",
                 "columns": [
                     "USE_DT",
                     "BUS_ROUTE_ID",

@@ -59,16 +59,16 @@ class StoreInfo:
         self.serviceKey = serviceKey
 
         # ServiceKey 등록
-        self.endpoint = f"http://apis.data.go.kr/B553077/api/open/sdsc/"
+        self.endpoint = 'http://apis.data.go.kr/B553077/api/open/sdsc/'
 
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
-            
+
             "지정상권": {
                 "url": f"{self.endpoint}storeZoneOne?serviceKey={self.serviceKey}",
                 "columns": ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt'],
             },
-            
+
             "반경상권": {
                 "url": f"{self.endpoint}storeZoneInRadius?serviceKey={self.serviceKey}",
                 "columns": ['trarNo', 'mainTrarNm', 'ctprvnCd', 'ctprvnNm', 'signguCd', 'signguNm', 'trarArea', 'coordNum', 'coords', 'stdrDt'],
@@ -148,7 +148,7 @@ class StoreInfo:
                 "url": f"{self.endpoint}smallUpjongList?serviceKey={self.serviceKey}",
                 "columns": ['indsLclsCd', 'indsLclsNm', 'indsMclsCd', 'indsMclsNm', 'indsSclsCd', 'indsSclsNm', 'stdrDt'],
             },
-            
+
         }
 
 
@@ -166,9 +166,7 @@ class StoreInfo:
             return
 
         try:
-            params = ""
-            for key, value in kwargs.items():
-                params += f"&{key}={value}"
+            params = "".join(f"&{key}={value}" for key, value in kwargs.items())
         except:
             self.logger.error(f"{category} 파라미터 파싱 오류")
             return
@@ -186,7 +184,7 @@ class StoreInfo:
             items = xmlsoup.findAll("item")
 
         except:
-            self.logger.error(f"OpenAPI 호출 오류")
+            self.logger.error('OpenAPI 호출 오류')
             return
 
         if result_code == "00":
@@ -213,13 +211,13 @@ class StoreInfo:
                     df.index = range(len(df))
 
                 else:
-                    self.logger.info(f"조회 결과 없음")
+                    self.logger.info('조회 결과 없음')
                     df = pd.DataFrame(columns=columns)
                     df = self.ChangeCols(df)
                     return df
 
             except:
-                self.logger.error(f"조회 로직 오류")
+                self.logger.error('조회 로직 오류')
                 return
 
         else:

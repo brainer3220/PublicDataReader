@@ -47,25 +47,40 @@ class Transportation:
 
         # 오퍼레이션별 URL 및 컬럼 매핑 딕셔너리
         self.metaDict = {
-
             "지하철승하차": {
                 "url": f"{self.endpoint}{self.serviceKey}/xml/CardSubwayStatsNew/",
-                "columns": ["USE_DT", "LINE_NUM", "SUB_STA_NM", "RIDE_PASGR_NUM", "ALIGHT_PASGR_NUM", "WORK_DT"]
+                "columns": [
+                    "USE_DT",
+                    "LINE_NUM",
+                    "SUB_STA_NM",
+                    "RIDE_PASGR_NUM",
+                    "ALIGHT_PASGR_NUM",
+                    "WORK_DT",
+                ],
             },
-
             "버스승하차": {
                 "url": f"{self.endpoint}{self.serviceKey}/xml/CardBusStatisticsServiceNew/",
-                "columns": ['USE_DT', 'BUS_ROUTE_ID', 'BUS_ROUTE_NO', 'BUS_ROUTE_NM', 'STND_BSST_ID', 'BSST_ARS_NO', 'BUS_STA_NM', 'RIDE_PASGR_NUM', 'ALIGHT_PASGR_NUM', 'WORK_DT']
+                "columns": [
+                    "USE_DT",
+                    "BUS_ROUTE_ID",
+                    "BUS_ROUTE_NO",
+                    "BUS_ROUTE_NM",
+                    "STND_BSST_ID",
+                    "BSST_ARS_NO",
+                    "BUS_STA_NM",
+                    "RIDE_PASGR_NUM",
+                    "ALIGHT_PASGR_NUM",
+                    "WORK_DT",
+                ],
             },
-
         }
 
     def read_data(self, category, **kwargs):
 
         # 엔드포인트, 파라미터 및 컬럼 목록 매핑
         try:
-            endpoint = self.metaDict[category]['url']
-            columns = self.metaDict[category]['columns']
+            endpoint = self.metaDict[category]["url"]
+            columns = self.metaDict[category]["columns"]
         except:
             self.logger.error(f"{category} 참조 오류")
             return
@@ -140,21 +155,18 @@ class Transportation:
         """
 
         self.colDict = {
-            'USE_DT': '사용일자',
-
-            'LINE_NUM': '호선명',
-            'SUB_STA_NM': '역명',
-
-            'BUS_ROUTE_ID': '노선ID',
-            'BUS_ROUTE_NO': '노선번호',
-            'BUS_ROUTE_NM': '노선명',
-            'STND_BSST_ID': '표준버스정류장ID',
-            'BSST_ARS_NO': '버스정류장ARS번호',
-            'BUS_STA_NM': '역명',
-
-            'RIDE_PASGR_NUM': '승차총승객수',
-            'ALIGHT_PASGR_NUM': '하차총승객수',
-            'WORK_DT': '등록일자'
+            "USE_DT": "사용일자",
+            "LINE_NUM": "호선명",
+            "SUB_STA_NM": "역명",
+            "BUS_ROUTE_ID": "노선ID",
+            "BUS_ROUTE_NO": "노선번호",
+            "BUS_ROUTE_NM": "노선명",
+            "STND_BSST_ID": "표준버스정류장ID",
+            "BSST_ARS_NO": "버스정류장ARS번호",
+            "BUS_STA_NM": "역명",
+            "RIDE_PASGR_NUM": "승차총승객수",
+            "ALIGHT_PASGR_NUM": "하차총승객수",
+            "WORK_DT": "등록일자",
         }
 
         df = df.rename(columns=self.colDict)

@@ -69,65 +69,237 @@ class Transaction:
             "아파트": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '도로명', '법정동', '지번', '아파트', '건축년도', '층', '전용면적', '년', '월', '일', '거래금액', '도로명건물본번호코드', '도로명건물부번호코드', '도로명시군구코드', '도로명일련번호코드', '도로명지상지하코드', '도로명코드', '법정동본번코드', '법정동부번코드', '법정동시군구코드', '법정동읍면동코드', '법정동지번코드', '일련번호', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "도로명",
+                        "법정동",
+                        "지번",
+                        "아파트",
+                        "건축년도",
+                        "층",
+                        "전용면적",
+                        "년",
+                        "월",
+                        "일",
+                        "거래금액",
+                        "도로명건물본번호코드",
+                        "도로명건물부번호코드",
+                        "도로명시군구코드",
+                        "도로명일련번호코드",
+                        "도로명지상지하코드",
+                        "도로명코드",
+                        "법정동본번코드",
+                        "법정동부번코드",
+                        "법정동시군구코드",
+                        "법정동읍면동코드",
+                        "법정동지번코드",
+                        "일련번호",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
                 "전월세": {
                     "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '법정동', '지번', '아파트', '건축년도', '층', '전용면적', '년', '월', '일', '보증금액', '월세금액']
-                }
+                    "columns": [
+                        "지역코드",
+                        "법정동",
+                        "지번",
+                        "아파트",
+                        "건축년도",
+                        "층",
+                        "전용면적",
+                        "년",
+                        "월",
+                        "일",
+                        "보증금액",
+                        "월세금액",
+                    ],
+                },
             },
-
             "오피스텔": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiTrade?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '시군구', '법정동', '지번', '단지', '건축년도', '층', '전용면적', '년', '월', '일', '거래금액', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "시군구",
+                        "법정동",
+                        "지번",
+                        "단지",
+                        "건축년도",
+                        "층",
+                        "전용면적",
+                        "년",
+                        "월",
+                        "일",
+                        "거래금액",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
                 "전월세": {
                     "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcOffiRent?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '시군구', '법정동', '지번', '단지', '건축년도', '층', '전용면적', '년', '월', '일', '보증금', '월세']
-                }
+                    "columns": [
+                        "지역코드",
+                        "시군구",
+                        "법정동",
+                        "지번",
+                        "단지",
+                        "건축년도",
+                        "층",
+                        "전용면적",
+                        "년",
+                        "월",
+                        "일",
+                        "보증금",
+                        "월세",
+                    ],
+                },
             },
-
             "단독다가구": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHTrade?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '법정동', '주택유형', '건축년도', '대지면적', '연면적', '년', '월', '일', '거래금액', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "법정동",
+                        "주택유형",
+                        "건축년도",
+                        "대지면적",
+                        "연면적",
+                        "년",
+                        "월",
+                        "일",
+                        "거래금액",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
                 "전월세": {
                     "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSHRent?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '법정동', '건축년도', '계약면적', '년', '월', '일', '보증금액', '월세금액']
-                }
+                    "columns": [
+                        "지역코드",
+                        "법정동",
+                        "건축년도",
+                        "계약면적",
+                        "년",
+                        "월",
+                        "일",
+                        "보증금액",
+                        "월세금액",
+                    ],
+                },
             },
-
             "연립다세대": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '법정동', '지번', '연립다세대', '건축년도', '층', '대지권면적', '전용면적', '년', '월', '일', '거래금액', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "법정동",
+                        "지번",
+                        "연립다세대",
+                        "건축년도",
+                        "층",
+                        "대지권면적",
+                        "전용면적",
+                        "년",
+                        "월",
+                        "일",
+                        "거래금액",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
                 "전월세": {
                     "url": f"http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '법정동', '지번', '연립다세대', '건축년도', '층', '전용면적', '년', '월', '일', '보증금액', '월세금액']
-                }
+                    "columns": [
+                        "지역코드",
+                        "법정동",
+                        "지번",
+                        "연립다세대",
+                        "건축년도",
+                        "층",
+                        "전용면적",
+                        "년",
+                        "월",
+                        "일",
+                        "보증금액",
+                        "월세금액",
+                    ],
+                },
             },
-
             "상업업무용": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcNrgTrade?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '시군구', '법정동', '유형', '용도지역', '건물주용도', '건축년도', '대지면적', '건물면적', '년', '월', '일', '거래금액', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "시군구",
+                        "법정동",
+                        "유형",
+                        "용도지역",
+                        "건물주용도",
+                        "건축년도",
+                        "대지면적",
+                        "건물면적",
+                        "년",
+                        "월",
+                        "일",
+                        "거래금액",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
             },
-
             "토지": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcLandTrade?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '시군구', '법정동', '용도지역', '지목', '거래면적', '거래금액', '년', '월', '일', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "시군구",
+                        "법정동",
+                        "용도지역",
+                        "지목",
+                        "거래면적",
+                        "거래금액",
+                        "년",
+                        "월",
+                        "일",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
             },
-
             "분양입주권": {
                 "매매": {
                     "url": f"http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcSilvTrade?serviceKey={self.serviceKey}",
-                    "columns": ['지역코드', '시군구', '법정동', '지번', '단지', '층', '전용면적', '구분', '년', '월', '일', '거래금액', '거래유형', '중개사소재지', '해제사유발생일', '해제여부']
+                    "columns": [
+                        "지역코드",
+                        "시군구",
+                        "법정동",
+                        "지번",
+                        "단지",
+                        "층",
+                        "전용면적",
+                        "구분",
+                        "년",
+                        "월",
+                        "일",
+                        "거래금액",
+                        "거래유형",
+                        "중개사소재지",
+                        "해제사유발생일",
+                        "해제여부",
+                    ],
                 },
             },
         }
@@ -136,18 +308,20 @@ class Transaction:
         for prod in self.metaDict.keys():
             for trans in self.metaDict[prod].keys():
                 # Endpoint
-                url = self.metaDict[prod][trans]['url']
+                url = self.metaDict[prod][trans]["url"]
                 result = requests.get(url, verify=False)
                 xmlsoup = BeautifulSoup(result.text, "lxml-xml")
-                header = xmlsoup.find('header')
-                result_code = header.find('resultCode').text
-                result_msg = header.find('resultMsg').text
+                header = xmlsoup.find("header")
+                result_code = header.find("resultCode").text
+                result_msg = header.find("resultMsg").text
                 if result_code == "00":
                     self.logger.info(
-                        f"{prod} {trans} 조회 서비스 정상 - ({result_code}) {result_msg}")
+                        f"{prod} {trans} 조회 서비스 정상 - ({result_code}) {result_msg}"
+                    )
                 else:
                     self.logger.error(
-                        f"{prod} {trans} 조회 서비스 오류 - ({result_code}) {result_msg}")
+                        f"{prod} {trans} 조회 서비스 오류 - ({result_code}) {result_msg}"
+                    )
 
     def collect_data(self, prod, trans, sigunguCode, startYearMonth, endYearMonth):
         """
@@ -185,8 +359,8 @@ class Transaction:
         """
         # 엔드포인트 및 컬럼 목록 매핑
         try:
-            endpoint = self.metaDict[prod][trans]['url']
-            columns = self.metaDict[prod][trans]['columns']
+            endpoint = self.metaDict[prod][trans]["url"]
+            columns = self.metaDict[prod][trans]["columns"]
         except:
             self.logger.error(f"{prod} {trans} 참조 오류")
             return
@@ -276,91 +450,554 @@ class Building:
 
         # 메타정보 매핑
         self.metaDict = {
-
             "기본개요": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrBasisOulnInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['bjdongCd', 'bldNm', 'block', 'bun', 'bylotCnt', 'crtnDay', 'guyukCd', 'guyukCdNm', 'ji', 'jiguCd', 'jiguCdNm', 'jiyukCd', 'jiyukCdNm', 'lot', 'mgmBldrgstPk', 'mgmUpBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "bylotCnt",
+                    "crtnDay",
+                    "guyukCd",
+                    "guyukCdNm",
+                    "ji",
+                    "jiguCd",
+                    "jiguCdNm",
+                    "jiyukCd",
+                    "jiyukCdNm",
+                    "lot",
+                    "mgmBldrgstPk",
+                    "mgmUpBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                ],
             },
-
             "총괄표제부": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrRecapTitleInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['archArea', 'atchBldArea', 'atchBldCnt', 'bcRat', 'bjdongCd', 'bldNm', 'block', 'bun', 'bylotCnt', 'crtnDay', 'engrEpi', 'engrGrade', 'engrRat', 'etcPurps', 'fmlyCnt', 'gnBldCert', 'gnBldGrade', 'hhldCnt', 'hoCnt', 'indrAutoArea', 'indrAutoUtcnt', 'indrMechArea', 'indrMechUtcnt', 'itgBldCert', 'itgBldGrade', 'ji', 'lot', 'mainBldCnt', 'mainPurpsCd', 'mainPurpsCdNm', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newOldRegstrGbCd', 'newOldRegstrGbCdNm', 'newPlatPlc', 'oudrAutoArea', 'oudrAutoUtcnt', 'oudrMechArea', 'oudrMechUtcnt', 'platArea', 'platGbCd', 'platPlc', 'pmsDay', 'pmsnoGbCd', 'pmsnoGbCdNm', 'pmsnoKikCd', 'pmsnoKikCdNm', 'pmsnoYear', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm', 'stcnsDay', 'totArea', 'totPkngCnt', 'useAprDay', 'vlRat', 'vlRatEstmTotArea']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "archArea",
+                    "atchBldArea",
+                    "atchBldCnt",
+                    "bcRat",
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "bylotCnt",
+                    "crtnDay",
+                    "engrEpi",
+                    "engrGrade",
+                    "engrRat",
+                    "etcPurps",
+                    "fmlyCnt",
+                    "gnBldCert",
+                    "gnBldGrade",
+                    "hhldCnt",
+                    "hoCnt",
+                    "indrAutoArea",
+                    "indrAutoUtcnt",
+                    "indrMechArea",
+                    "indrMechUtcnt",
+                    "itgBldCert",
+                    "itgBldGrade",
+                    "ji",
+                    "lot",
+                    "mainBldCnt",
+                    "mainPurpsCd",
+                    "mainPurpsCdNm",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newOldRegstrGbCd",
+                    "newOldRegstrGbCdNm",
+                    "newPlatPlc",
+                    "oudrAutoArea",
+                    "oudrAutoUtcnt",
+                    "oudrMechArea",
+                    "oudrMechUtcnt",
+                    "platArea",
+                    "platGbCd",
+                    "platPlc",
+                    "pmsDay",
+                    "pmsnoGbCd",
+                    "pmsnoGbCdNm",
+                    "pmsnoKikCd",
+                    "pmsnoKikCdNm",
+                    "pmsnoYear",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                    "stcnsDay",
+                    "totArea",
+                    "totPkngCnt",
+                    "useAprDay",
+                    "vlRat",
+                    "vlRatEstmTotArea",
+                ],
             },
-
             "표제부": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrTitleInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['archArea', 'atchBldArea', 'atchBldCnt', 'bcRat', 'bjdongCd', 'bldNm', 'block', 'bun', 'bylotCnt', 'crtnDay', 'dongNm', 'emgenUseElvtCnt', 'engrEpi', 'engrGrade', 'engrRat', 'etcPurps', 'etcRoof', 'etcStrct', 'fmlyCnt', 'gnBldCert', 'gnBldGrade', 'grndFlrCnt', 'heit', 'hhldCnt', 'hoCnt', 'indrAutoArea', 'indrAutoUtcnt', 'indrMechArea', 'indrMechUtcnt', 'itgBldCert', 'itgBldGrade', 'ji', 'lot', 'mainAtchGbCd', 'mainAtchGbCdNm', 'mainPurpsCd', 'mainPurpsCdNm', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'oudrAutoArea', 'oudrAutoUtcnt', 'oudrMechArea', 'oudrMechUtcnt', 'platArea', 'platGbCd', 'platPlc', 'pmsDay', 'pmsnoGbCd', 'pmsnoGbCdNm', 'pmsnoKikCd', 'pmsnoKikCdNm', 'pmsnoYear', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rideUseElvtCnt', 'rnum', 'roofCd', 'roofCdNm', 'rserthqkAblty', 'rserthqkDsgnApplyYn', 'sigunguCd', 'splotNm', 'stcnsDay', 'strctCd', 'strctCdNm', 'totArea', 'totDongTotArea', 'ugrndFlrCnt', 'useAprDay', 'vlRat', 'vlRatEstmTotArea']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "archArea",
+                    "atchBldArea",
+                    "atchBldCnt",
+                    "bcRat",
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "bylotCnt",
+                    "crtnDay",
+                    "dongNm",
+                    "emgenUseElvtCnt",
+                    "engrEpi",
+                    "engrGrade",
+                    "engrRat",
+                    "etcPurps",
+                    "etcRoof",
+                    "etcStrct",
+                    "fmlyCnt",
+                    "gnBldCert",
+                    "gnBldGrade",
+                    "grndFlrCnt",
+                    "heit",
+                    "hhldCnt",
+                    "hoCnt",
+                    "indrAutoArea",
+                    "indrAutoUtcnt",
+                    "indrMechArea",
+                    "indrMechUtcnt",
+                    "itgBldCert",
+                    "itgBldGrade",
+                    "ji",
+                    "lot",
+                    "mainAtchGbCd",
+                    "mainAtchGbCdNm",
+                    "mainPurpsCd",
+                    "mainPurpsCdNm",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "oudrAutoArea",
+                    "oudrAutoUtcnt",
+                    "oudrMechArea",
+                    "oudrMechUtcnt",
+                    "platArea",
+                    "platGbCd",
+                    "platPlc",
+                    "pmsDay",
+                    "pmsnoGbCd",
+                    "pmsnoGbCdNm",
+                    "pmsnoKikCd",
+                    "pmsnoKikCdNm",
+                    "pmsnoYear",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rideUseElvtCnt",
+                    "rnum",
+                    "roofCd",
+                    "roofCdNm",
+                    "rserthqkAblty",
+                    "rserthqkDsgnApplyYn",
+                    "sigunguCd",
+                    "splotNm",
+                    "stcnsDay",
+                    "strctCd",
+                    "strctCdNm",
+                    "totArea",
+                    "totDongTotArea",
+                    "ugrndFlrCnt",
+                    "useAprDay",
+                    "vlRat",
+                    "vlRatEstmTotArea",
+                ],
             },
-
             "층별개요": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrFlrOulnInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['area', 'areaExctYn', 'bjdongCd', 'bldNm', 'block', 'bun', 'crtnDay', 'dongNm', 'etcPurps', 'etcStrct', 'flrGbCd', 'flrGbCdNm', 'flrNo', 'flrNoNm', 'ji', 'lot', 'mainAtchGbCd', 'mainAtchGbCdNm', 'mainPurpsCd', 'mainPurpsCdNm', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'rnum', 'sigunguCd', 'splotNm', 'strctCd', 'strctCdNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "area",
+                    "areaExctYn",
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "crtnDay",
+                    "dongNm",
+                    "etcPurps",
+                    "etcStrct",
+                    "flrGbCd",
+                    "flrGbCdNm",
+                    "flrNo",
+                    "flrNoNm",
+                    "ji",
+                    "lot",
+                    "mainAtchGbCd",
+                    "mainAtchGbCdNm",
+                    "mainPurpsCd",
+                    "mainPurpsCdNm",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                    "strctCd",
+                    "strctCdNm",
+                ],
             },
-
             "부속지번": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrAtchJibunInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['atchBjdongCd', 'atchBlock', 'atchBun', 'atchEtcJibunNm', 'atchJi', 'atchLot', 'atchPlatGbCd', 'atchRegstrGbCd', 'atchRegstrGbCdNm', 'atchSigunguCd', 'atchSplotNm', 'bjdongCd', 'bldNm', 'block', 'bun', 'crtnDay', 'ji', 'lot', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "atchBjdongCd",
+                    "atchBlock",
+                    "atchBun",
+                    "atchEtcJibunNm",
+                    "atchJi",
+                    "atchLot",
+                    "atchPlatGbCd",
+                    "atchRegstrGbCd",
+                    "atchRegstrGbCdNm",
+                    "atchSigunguCd",
+                    "atchSplotNm",
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "crtnDay",
+                    "ji",
+                    "lot",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                ],
             },
-
             "전유공용면적": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrExposPubuseAreaInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate', 'dongNm', 'hoNm'],
-                "columns": ['area', 'bjdongCd', 'bldNm', 'block', 'bun', 'crtnDay', 'dongNm', 'etcPurps', 'etcStrct', 'exposPubuseGbCd', 'exposPubuseGbCdNm', 'flrGbCd', 'flrGbCdNm', 'flrNo', 'flrNoNm', 'hoNm', 'ji', 'lot', 'mainAtchGbCd', 'mainAtchGbCdNm', 'mainPurpsCd', 'mainPurpsCdNm', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm', 'strctCd', 'strctCdNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                    "dongNm",
+                    "hoNm",
+                ],
+                "columns": [
+                    "area",
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "crtnDay",
+                    "dongNm",
+                    "etcPurps",
+                    "etcStrct",
+                    "exposPubuseGbCd",
+                    "exposPubuseGbCdNm",
+                    "flrGbCd",
+                    "flrGbCdNm",
+                    "flrNo",
+                    "flrNoNm",
+                    "hoNm",
+                    "ji",
+                    "lot",
+                    "mainAtchGbCd",
+                    "mainAtchGbCdNm",
+                    "mainPurpsCd",
+                    "mainPurpsCdNm",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                    "strctCd",
+                    "strctCdNm",
+                ],
             },
-
             "오수정화시설": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrWclfInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['bjdongCd', 'bldNm', 'block', 'bun', 'capaLube', 'capaPsper', 'crtnDay', 'etcMode', 'ji', 'lot', 'mgmBldrgstPk', 'modeCd', 'modeCdNm', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm', 'unitGbCd', 'unitGbCdNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "capaLube",
+                    "capaPsper",
+                    "crtnDay",
+                    "etcMode",
+                    "ji",
+                    "lot",
+                    "mgmBldrgstPk",
+                    "modeCd",
+                    "modeCdNm",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                    "unitGbCd",
+                    "unitGbCdNm",
+                ],
             },
-
             "주택가격": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrHsprcInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['bjdongCd', 'bldNm', 'block', 'bun', 'bylotCnt', 'crtnDay', 'hsprc', 'ji', 'lot', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "bylotCnt",
+                    "crtnDay",
+                    "hsprc",
+                    "ji",
+                    "lot",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                ],
             },
-
             "전유부": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrExposInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['bjdongCd', 'bldNm', 'block', 'bun', 'crtnDay', 'dongNm', 'flrGbCd', 'flrGbCdNm', 'flrNo', 'hoNm', 'ji', 'lot', 'mgmBldrgstPk', 'naBjdongCd', 'naMainBun', 'naRoadCd', 'naSubBun', 'naUgrndCd', 'newPlatPlc', 'platGbCd', 'platPlc', 'regstrGbCd', 'regstrGbCdNm', 'regstrKindCd', 'regstrKindCdNm', 'rnum', 'sigunguCd', 'splotNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "bjdongCd",
+                    "bldNm",
+                    "block",
+                    "bun",
+                    "crtnDay",
+                    "dongNm",
+                    "flrGbCd",
+                    "flrGbCdNm",
+                    "flrNo",
+                    "hoNm",
+                    "ji",
+                    "lot",
+                    "mgmBldrgstPk",
+                    "naBjdongCd",
+                    "naMainBun",
+                    "naRoadCd",
+                    "naSubBun",
+                    "naUgrndCd",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "regstrGbCd",
+                    "regstrGbCdNm",
+                    "regstrKindCd",
+                    "regstrKindCdNm",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                ],
             },
-
             "지역지구구역": {
                 "url": f"http://apis.data.go.kr/1613000/BldRgstService_v2/getBrJijiguInfo?serviceKey={self.serviceKey}",
-                "parameters": ['sigunguCd', 'bjdongCd', 'platGbCd', 'bun', 'ji', 'startDate', 'endDate'],
-                "columns": ['bjdongCd', 'block', 'bun', 'crtnDay', 'etcJijigu', 'ji', 'jijiguCd', 'jijiguCdNm', 'jijiguGbCd', 'jijiguGbCdNm', 'lot', 'mgmBldrgstPk', 'newPlatPlc', 'platGbCd', 'platPlc', 'reprYn', 'rnum', 'sigunguCd', 'splotNm']
+                "parameters": [
+                    "sigunguCd",
+                    "bjdongCd",
+                    "platGbCd",
+                    "bun",
+                    "ji",
+                    "startDate",
+                    "endDate",
+                ],
+                "columns": [
+                    "bjdongCd",
+                    "block",
+                    "bun",
+                    "crtnDay",
+                    "etcJijigu",
+                    "ji",
+                    "jijiguCd",
+                    "jijiguCdNm",
+                    "jijiguGbCd",
+                    "jijiguGbCdNm",
+                    "lot",
+                    "mgmBldrgstPk",
+                    "newPlatPlc",
+                    "platGbCd",
+                    "platPlc",
+                    "reprYn",
+                    "rnum",
+                    "sigunguCd",
+                    "splotNm",
+                ],
             },
-
         }
 
         for category in self.metaDict.keys():
             # Endpoint
-            url = self.metaDict[category]['url']
+            url = self.metaDict[category]["url"]
             result = requests.get(url, verify=False)
             xmlsoup = BeautifulSoup(result.text, "lxml-xml")
-            header = xmlsoup.find('header')
-            result_code = header.find('resultCode').text
-            result_msg = header.find('resultMsg').text
+            header = xmlsoup.find("header")
+            result_code = header.find("resultCode").text
+            result_msg = header.find("resultMsg").text
             if result_code == "00":
-                self.logger.info(
-                    f"{category} 조회 서비스 정상 - ({result_code}) {result_msg}")
+                self.logger.info(f"{category} 조회 서비스 정상 - ({result_code}) {result_msg}")
             else:
-                self.logger.err(
-                    f"{category} 조회 서비스 오류 - ({result_code}) {result_msg}")
+                self.logger.err(f"{category} 조회 서비스 오류 - ({result_code}) {result_msg}")
 
     def read_data(self, category, **kwargs):
 
         # 엔드포인트, 파라미터 및 컬럼 목록 매핑
         try:
-            endpoint = self.metaDict[category]['url']
-            parameters = self.metaDict[category]['parameters']
-            columns = self.metaDict[category]['columns']
+            endpoint = self.metaDict[category]["url"]
+            parameters = self.metaDict[category]["parameters"]
+            columns = self.metaDict[category]["columns"]
         except:
             self.logger.error(f"{category} 참조 오류")
             return

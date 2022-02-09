@@ -22,9 +22,10 @@ semas(Small Enterprise And Market Service)
     17.상권정보 업종 소분류 조회
 """
 
-import pandas as pd
 import datetime
 import logging
+
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 

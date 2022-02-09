@@ -6,9 +6,10 @@
     02.서울시 버스노선별 정류장별 승하차 인원 정보
 """
 
-import pandas as pd
 import datetime
 import logging
+
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 

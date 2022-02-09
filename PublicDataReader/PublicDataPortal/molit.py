@@ -28,9 +28,10 @@ molit(Ministry of Land, Infrastructure and Transport)
     10.건축물대장 지역지구구역 조회
 """
 
-import pandas as pd
 import datetime
 import logging
+
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
